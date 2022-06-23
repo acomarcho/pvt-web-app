@@ -1,6 +1,15 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
+import {
+  getMinorLapses,
+  getMajorLapses,
+  getMeanRT,
+  getMedianRT,
+  get1OverMeanRT,
+  getFastest10RT,
+  getSlowest10RT,
+} from "../../utils/statistics";
+import axios from "axios";
 
 const Game = () => {
   const router = useRouter();
@@ -25,32 +34,39 @@ const Game = () => {
       "listReaksi",
       JSON.stringify([...reactionTimes, elapsedTime])
     );
-  }, [lastShown, reactionTimes])
+  }, [lastShown, reactionTimes]);
 
   const onClick = useCallback(() => {
     if (showImage) {
       handleReaction();
     }
-  }, [showImage, handleReaction])
-
-  const onKeypress = useCallback((e: KeyboardEvent) => {
-    if (showImage && (e.key === " " || e.key === "Enter")) {
-      handleReaction();
-    }
   }, [showImage, handleReaction]);
 
+  const onKeypress = useCallback(
+    (e: KeyboardEvent) => {
+      if (showImage && (e.key === " " || e.key === "Enter")) {
+        handleReaction();
+      }
+    },
+    [showImage, handleReaction]
+  );
+
   useEffect(() => {
-    if (!localStorage.getItem('nama') || !localStorage.getItem('durasi') || !localStorage.getItem('tingkatKantuk')) {
-      router.push('/');
+    if (
+      !localStorage.getItem("nama") ||
+      !localStorage.getItem("durasi") ||
+      !localStorage.getItem("tingkatKantuk")
+    ) {
+      router.push("/");
       return;
     }
-    
+
     localStorage.setItem("listReaksi", JSON.stringify([]));
 
-    const timer = setTimeout(() => {
+    const timer = setTimeout(async () => {
       window.removeEventListener("click", onClick);
       window.removeEventListener("keypress", onKeypress);
-      
+
       const highestId = window.setTimeout(() => {
         for (let i = highestId; i >= 0; i--) {
           window.clearInterval(i);
@@ -58,6 +74,75 @@ const Game = () => {
       }, 0);
 
       router.push("/app/results");
+
+      console.log("Saving data to spreadsheet ...");
+
+      /* Simpan hasil! */
+      const nama = localStorage.getItem("nama");
+      const durasi = localStorage.getItem("durasi");
+      const tingkatKantuk = localStorage.getItem("tingkatKantuk");
+      const tingkatLelah = localStorage.getItem("tingkatLelah");
+      const kesiapanKerja = localStorage.getItem("kesiapanKerja");
+      const listReaksi = JSON.parse(
+        localStorage.getItem("listReaksi") as string
+      ) as number[];
+      const banyakPercobaan = listReaksi.length;
+      const minorLapses = getMinorLapses(listReaksi);
+      const majorLapses = getMajorLapses(listReaksi);
+      const meanRT = getMeanRT(listReaksi);
+      const medianRT = getMedianRT(listReaksi);
+      const mean1OverMeanRT = get1OverMeanRT(listReaksi);
+      const fastest10RT = getFastest10RT(listReaksi);
+      const slowest10RT = getSlowest10RT(listReaksi);
+
+      // var myHeaders = new Headers();
+      // myHeaders.append("Content-Type", "application/json");
+      // var requestOptions = {
+      //   method: "post",
+      //   headers: myHeaders,
+      //   body: JSON.stringify([
+      //     [
+      //       nama,
+      //       durasi,
+      //       tingkatKantuk,
+      //       tingkatLelah,
+      //       kesiapanKerja,
+      //       banyakPercobaan,
+      //       minorLapses,
+      //       majorLapses,
+      //       meanRT,
+      //       medianRT,
+      //       mean1OverMeanRT,
+      //       fastest10RT,
+      //       slowest10RT,
+      //     ],
+      //   ]),
+      // };
+
+      // await fetch(
+      //   "https://v1.nocodeapi.com/acomarcho/google_sheets/JiXabBvDSEXmwfge?tabId=Sheet1",
+      //   requestOptions
+      // );
+
+      const res = await axios.post("/api/sheets", {
+        nama,
+        durasi,
+        tingkatKantuk,
+        tingkatLelah,
+        kesiapanKerja,
+        banyakPercobaan,
+        minorLapses,
+        majorLapses,
+        meanRT,
+        medianRT,
+        mean1OverMeanRT,
+        fastest10RT,
+        slowest10RT,
+      });
+
+      window.alert(res);
+
+      console.log("Data saved to spreadsheet!");
     }, parseInt(localStorage.getItem("durasi")!) * 1000);
 
     generateNewImage();
@@ -100,7 +185,7 @@ const Game = () => {
       {showImage && (
         <div style={{ marginTop: "45px" }}>
           <img
-            style={{width: '100%'}}
+            style={{ width: "100%" }}
             src="/board.png"
             alt="checkered board"
           />

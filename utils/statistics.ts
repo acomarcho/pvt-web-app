@@ -29,7 +29,6 @@ export const getFastest10RT = (data: number[]): number => {
 
 export const getSlowest10RT = (data: number[]): number => {
   const sortedData = [...data].sort((a, b) => a - b).reverse();
-  console.log(sortedData);
   /* Ambil bottom 10% data */
   const bottom10Data = sortedData.slice(0, Math.ceil(sortedData.length * 0.1));
   return mean(bottom10Data);
