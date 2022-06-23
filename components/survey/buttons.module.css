@@ -1,0 +1,22 @@
+.buttonsContainer {
+  margin-top: 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttonsContainer button {
+  color: var(--blueberry);
+  background: none;
+  border: none;
+  transition: all 0.3s linear;
+  font-size: 48px;
+}
+
+.buttonsContainer button:hover {
+  transform: scale(1.05);
+}
+
+.buttonsContainer button:disabled {
+  opacity: 0.3;
+}

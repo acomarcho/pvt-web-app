@@ -1,0 +1,37 @@
+.formContainer {
+  margin-top: 30px;
+}
+
+.formItem {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  gap: 6px;
+}
+
+.formItem input {
+  padding: 12px 24px;
+  background: none;
+  border: 1px solid var(--secondary);
+  border-radius: 12px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.formItem input::-webkit-outer-spin-button,
+.formItem input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.formItem input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.mulaiContainer {
+  margin-top: 30px;
+}
+
+.mulaiContainer p {
+  margin-top: 9px;
+}

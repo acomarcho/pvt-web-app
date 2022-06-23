@@ -1,0 +1,13 @@
+.wrapper {
+  max-width: 768px;
+  padding: 30px;
+  margin: 0 auto;
+  box-shadow: var(--super-shadow);
+  min-height: 100vh;
+}
+
+@media (min-width: 640px) {
+  .wrapper {
+    padding: 60px;
+  }
+}
