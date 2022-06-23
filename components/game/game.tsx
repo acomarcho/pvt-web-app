@@ -95,36 +95,7 @@ const Game = () => {
       const fastest10RT = getFastest10RT(listReaksi);
       const slowest10RT = getSlowest10RT(listReaksi);
 
-      // var myHeaders = new Headers();
-      // myHeaders.append("Content-Type", "application/json");
-      // var requestOptions = {
-      //   method: "post",
-      //   headers: myHeaders,
-      //   body: JSON.stringify([
-      //     [
-      //       nama,
-      //       durasi,
-      //       tingkatKantuk,
-      //       tingkatLelah,
-      //       kesiapanKerja,
-      //       banyakPercobaan,
-      //       minorLapses,
-      //       majorLapses,
-      //       meanRT,
-      //       medianRT,
-      //       mean1OverMeanRT,
-      //       fastest10RT,
-      //       slowest10RT,
-      //     ],
-      //   ]),
-      // };
-
-      // await fetch(
-      //   "https://v1.nocodeapi.com/acomarcho/google_sheets/JiXabBvDSEXmwfge?tabId=Sheet1",
-      //   requestOptions
-      // );
-
-      const res = await axios.post("/api/sheets", {
+      await axios.post("/api/sheets", {
         nama,
         durasi,
         tingkatKantuk,
@@ -139,10 +110,6 @@ const Game = () => {
         fastest10RT,
         slowest10RT,
       });
-
-      window.alert(res);
-
-      console.log("Data saved to spreadsheet!");
     }, parseInt(localStorage.getItem("durasi")!) * 1000);
 
     generateNewImage();
