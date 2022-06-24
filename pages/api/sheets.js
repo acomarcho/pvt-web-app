@@ -1,3 +1,5 @@
+import path from "path";
+
 const { google } = require("googleapis");
 const spreadsheetId = "1W8XlxUakxpttD5etO6K7TaSEaHLyli0PIjW1sEfsDOo";
 
@@ -20,7 +22,10 @@ export default async function handler(req, res) {
     } = req.body;
 
     const auth = new google.auth.GoogleAuth({
-      keyFile: "credentials.json",
+      credentials: {
+        client_email: process.env.GOOGLE_CLIENT_EMAIL,
+        private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n')
+      },
       scopes: "https://www.googleapis.com/auth/spreadsheets"
     });
   
