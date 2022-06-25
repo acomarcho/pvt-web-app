@@ -83,6 +83,7 @@ const Game = () => {
       const tingkatKantuk = localStorage.getItem("tingkatKantuk");
       const tingkatLelah = localStorage.getItem("tingkatLelah");
       const kesiapanKerja = localStorage.getItem("kesiapanKerja");
+      const reactions = localStorage.getItem("listReaksi");
       const listReaksi = JSON.parse(
         localStorage.getItem("listReaksi") as string
       ) as number[];
@@ -101,6 +102,7 @@ const Game = () => {
         tingkatKantuk,
         tingkatLelah,
         kesiapanKerja,
+        reactions,
         banyakPercobaan,
         minorLapses,
         majorLapses,
@@ -110,7 +112,7 @@ const Game = () => {
         fastest10RT,
         slowest10RT,
       });
-    }, parseInt(localStorage.getItem("durasi")!) * 1000);
+    }, parseInt(localStorage.getItem("durasi")!) * 1000 * 60);
 
     generateNewImage();
 

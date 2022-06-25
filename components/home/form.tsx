@@ -59,12 +59,12 @@ const Form = () => {
       </div>
       <div className={styles.formItem}>
         <label htmlFor="durasi">
-          Durasi (dalam detik) <span className="gum">*</span>
+          Durasi (dalam menit) <span className="gum">*</span>
         </label>
         <input
           id="durasi"
           type="number"
-          placeholder="60"
+          placeholder="1"
           onChange={(e) => {
             setDurasi(e.target.value);
           }}

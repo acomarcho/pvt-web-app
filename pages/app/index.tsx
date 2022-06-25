@@ -29,7 +29,7 @@ const App = () => {
         <br />
         <p>Silakan tekan tombol space bar, enter, atau klik kiri pada mouse setiap kali muncul gambar garis hitam dan putih.</p>
         <br />
-        <p>Anda akan mengerjakan tes selama <span className="blueberry">{duration} detik</span>.</p>
+        <p>Anda akan mengerjakan tes selama <span className="blueberry">{duration} menit</span>.</p>
       </div>
       <Button text='Saya mengerti' onClick={onClick} marginTop='30px' />
     </>
