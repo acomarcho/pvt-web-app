@@ -1,7 +1,7 @@
 import path from "path";
 
 const { google } = require("googleapis");
-const spreadsheetId = "1W8XlxUakxpttD5etO6K7TaSEaHLyli0PIjW1sEfsDOo";
+const spreadsheetId = "1wz7AZIbQ4zEDo7W4JH252_TXP42ScXptlopLlIwKvOI";
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
