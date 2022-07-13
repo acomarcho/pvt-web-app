@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/router";
 import {
   getMinorLapses,
@@ -13,13 +13,14 @@ import axios from "axios";
 
 const Game = () => {
   const router = useRouter();
+  const newImageTimer = useRef<any>(null);
 
   const [showImage, setShowImage] = useState<boolean>(false);
   const [lastShown, setLastShown] = useState<number>(0);
   const [reactionTimes, setReactionTimes] = useState<number[]>([]);
 
   const generateNewImage = () => {
-    setTimeout(() => {
+    newImageTimer.current = setTimeout(() => {
       setLastShown(new Date().getTime());
       setShowImage(true);
     }, Math.floor(Math.random() * 2000) + 1000);
@@ -39,13 +40,21 @@ const Game = () => {
   const onClick = useCallback(() => {
     if (showImage) {
       handleReaction();
+    } else {
+      clearTimeout(newImageTimer.current);
+      generateNewImage();
     }
   }, [showImage, handleReaction]);
 
   const onKeypress = useCallback(
     (e: KeyboardEvent) => {
-      if (showImage && (e.key === " " || e.key === "Enter")) {
-        handleReaction();
+      if (e.key === " " || e.key === "Enter") {
+        if (showImage) {
+          handleReaction();
+        } else {
+          clearTimeout(newImageTimer.current);
+          generateNewImage();
+        }
       }
     },
     [showImage, handleReaction]
