@@ -11,9 +11,12 @@ import {
 } from "../../utils/statistics";
 import axios from "axios";
 
+const timeoutTime = 5; /* in seconds */
+
 const Game = () => {
   const router = useRouter();
-  const newImageTimer = useRef<any>(null);
+  const newImageTimer = useRef<NodeJS.Timeout | null>(null);
+  const imageTimeoutTimer = useRef<NodeJS.Timeout | null>(null);
 
   const [showImage, setShowImage] = useState<boolean>(false);
   const [lastShown, setLastShown] = useState<number>(0);
@@ -24,6 +27,24 @@ const Game = () => {
       setLastShown(new Date().getTime());
       setShowImage(true);
     }, Math.floor(Math.random() * 2000) + 1000);
+
+    clearTimeout(imageTimeoutTimer.current!);
+
+    imageTimeoutTimer.current = setTimeout(() => {
+      reactionTimeout();
+    }, timeoutTime * 1000);
+  };
+
+  const reactionTimeout = () => {
+    /* Reaksi gagal! */
+    setShowImage(false);
+    const elapsedTime = timeoutTime * 1000;
+    setReactionTimes([...reactionTimes, elapsedTime]);
+    localStorage.setItem(
+      "listReaksi",
+      JSON.stringify([...reactionTimes, elapsedTime])
+    );
+    generateNewImage();
   };
 
   const handleReaction = useCallback(() => {
@@ -41,7 +62,7 @@ const Game = () => {
     if (showImage) {
       handleReaction();
     } else {
-      clearTimeout(newImageTimer.current);
+      clearTimeout(newImageTimer.current!);
       generateNewImage();
     }
   }, [showImage, handleReaction]);
@@ -52,7 +73,7 @@ const Game = () => {
         if (showImage) {
           handleReaction();
         } else {
-          clearTimeout(newImageTimer.current);
+          clearTimeout(newImageTimer.current!);
           generateNewImage();
         }
       }
@@ -150,15 +171,23 @@ const Game = () => {
             setiap kali muncul gambar garis hitam dan putih.
           </p>
         )}
-        {reactionTimes.length > 0 && (
-          <p>
-            Reaksi terakhir Anda membutuhkan waktu{" "}
-            <span className="mint">
-              {reactionTimes[reactionTimes.length - 1] / 1000} detik
-            </span>
-            .
-          </p>
-        )}
+        {reactionTimes.length > 0 &&
+          reactionTimes[reactionTimes.length - 1] === timeoutTime * 1000 && (
+            <p>
+              Reaksi Anda terlalu lama, melebihi{" "}
+              <span className="gum">{timeoutTime} detik!</span>
+            </p>
+          )}
+        {reactionTimes.length > 0 &&
+          reactionTimes[reactionTimes.length - 1] !== timeoutTime * 1000 && (
+            <p>
+              Reaksi terakhir Anda membutuhkan waktu{" "}
+              <span className="mint">
+                {reactionTimes[reactionTimes.length - 1] / 1000} detik
+              </span>
+              .
+            </p>
+          )}
       </div>
       {showImage && (
         <div style={{ marginTop: "45px" }}>
