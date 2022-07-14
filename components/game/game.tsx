@@ -11,7 +11,7 @@ import {
 } from "../../utils/statistics";
 import axios from "axios";
 
-const timeoutTime = 5; /* in seconds */
+const timeoutTime = 30; /* in seconds */
 
 const Game = () => {
   const router = useRouter();
