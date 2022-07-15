@@ -1,6 +1,6 @@
-## Demo
+## Live Application
 
-To run a demo of this application, please head to https://pvt-demo.vercel.app/.
+Check it out [here!](https://pvt-online.vercel.app)
 
 ## About
 
