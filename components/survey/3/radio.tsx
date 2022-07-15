@@ -28,10 +28,10 @@ const RadioButtons = () => {
             marginTop: "30px",
           }}
         >
-          <Radio value="1">Sangat siap</Radio>
-          <Radio value="2">Siap</Radio>
-          <Radio value="3">Cukup siap</Radio>
-          <Radio value="4">Tidak siap</Radio>
+          <Radio value="1"><p>Sangat siap</p></Radio>
+          <Radio value="2"><p>Siap</p></Radio>
+          <Radio value="3"><p>Cukup siap</p></Radio>
+          <Radio value="4"><p>Tidak siap</p></Radio>
         </div>
       </RadioGroup>
     </ChakraProvider>

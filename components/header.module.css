@@ -6,3 +6,9 @@
   font-size: 24px;
   font-weight: 700 !important;
 }
+
+@media (min-width: 768px) {
+  .heading {
+    font-size: 35px;
+  }
+}

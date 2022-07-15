@@ -20,3 +20,9 @@
 .buttonsContainer button:disabled {
   opacity: 0.3;
 }
+
+@media (min-width: 768px) {
+  .buttonsContainer button {
+    font-size: 64px;
+  }
+}

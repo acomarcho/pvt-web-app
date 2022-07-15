@@ -6,7 +6,7 @@
 }
 
 .card h1 {
-  font-size: 20px;
+  font-size: 21px;
   color: var(--white-2);
 }
 
@@ -44,4 +44,13 @@
 
 .card .buttons button:disabled {
   opacity: 0.3;
+}
+
+@media (min-width: 768px) {
+  .card h1 {
+    font-size: 30px;
+  }
+  .card .buttons button {
+    font-size: 64px;
+  }
 }

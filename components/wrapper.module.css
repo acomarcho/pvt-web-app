@@ -6,8 +6,10 @@
   min-height: 100vh;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .wrapper {
+    max-width: 1160px;
+    box-shadow: none;
     padding: 60px;
   }
 }

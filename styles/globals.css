@@ -45,3 +45,9 @@ p, label, input, button {
 .mint {
   color: var(--mint);
 }
+
+@media (min-width: 768px) {
+  p, label, input, button {
+    font-size: 18px;
+  }
+}
