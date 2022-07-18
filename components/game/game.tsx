@@ -154,6 +154,8 @@ const Game = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
+    console.log("[onClick, onKeypress, handleReaction]");
+
     window.addEventListener("click", onClick);
     window.addEventListener("keypress", onKeypress);
     return () => {

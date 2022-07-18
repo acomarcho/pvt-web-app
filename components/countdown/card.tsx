@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import styles from './card.module.css';
 
@@ -11,12 +11,15 @@ const Card = (props: {startCount: number}) => {
       router.push('/app/game');
     } else {
       setCount(count - 1);
+      console.log("Panggil timeout!");
     }
   }
 
   useEffect(() => {
-    setInterval(updateCount, 1000);
-  })
+    setTimeout(() => {
+      updateCount();
+    }, 1000);
+  }, [count])
 
   return <div className={styles.card}>
     <h1>{count}</h1>
