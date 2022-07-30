@@ -14,16 +14,16 @@ const Range = () => {
   const [showTooltip, setShowTooltip] = useState<boolean>(true);
 
   useEffect(() => {
-    if (localStorage.getItem('tingkatLelah')) {
-      setSliderValue(parseFloat(localStorage.getItem('tingkatLelah') as string));
+    if (localStorage.getItem('kesiapanKerja')) {
+      setSliderValue(parseFloat(localStorage.getItem('kesiapanKerja') as string));
     } else {
-      localStorage.setItem('tingkatLelah', '50');
+      localStorage.setItem('kesiapanKerja', '5');
     }
   }, []);
 
   const onChange = (v: number) => {
     setSliderValue(v);
-    localStorage.setItem('tingkatLelah', v.toString());
+    localStorage.setItem('kesiapanKerja', v.toString());
   }
 
   return (
@@ -33,16 +33,16 @@ const Range = () => {
         defaultValue={sliderValue}
         value={sliderValue}
         min={1}
-        max={100}
-        step={0.1}
+        max={10}
+        step={1}
         color="#0AA4E7"
         onChange={(v) => onChange(v)}
         marginTop={"45px"}
         marginBottom={"15px"}
       >
-        {[1, 20, 40, 60, 80, 100].map((num) => {
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => {
           return (
-            <SliderMark value={num} mt="1" ml="-2.5" fontSize="sm" color="rgba(255, 255, 255, 0.8)" marginLeft={"-9px"} paddingTop={"8px"} key={num}>
+            <SliderMark value={num} mt="1" ml="-2.5" fontSize="sm" color="rgba(255, 255, 255, 0.8)" marginLeft={"-4px"} paddingTop={"8px"} key={num}>
               {num}
             </SliderMark>
           );

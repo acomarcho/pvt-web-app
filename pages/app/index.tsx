@@ -26,7 +26,7 @@ const App = () => {
       <div style={{marginTop: '15px'}}>
         <p><strong>Petunjuk pengujian PVT</strong></p>
         <br />
-        <p>Silakan tekan tombol space bar, enter, atau klik kiri pada mouse setiap kali muncul gambar garis hitam dan putih.</p>
+        <p>Silakan tekan tombol space bar menggunakan tangan kanan atau kiri (yang dirasa dapat cepat merespon stimulus) setiap kali muncul gambar kotak hitam dan putih.</p>
         <br />
         <p>Anda akan mengerjakan tes selama <span className="blueberry">{duration} menit</span>.</p>
       </div>
