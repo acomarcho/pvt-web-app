@@ -35,17 +35,18 @@ const Game = () => {
     }, timeoutTime * 1000);
   };
 
-  const reactionTimeout = () => {
+  const reactionTimeout = useCallback(() => {
     /* Reaksi gagal! */
     setShowImage(false);
     const elapsedTime = timeoutTime * 1000;
-    setReactionTimes([...reactionTimes, elapsedTime]);
+    const oldReactionTimes = JSON.parse(localStorage.getItem("listReaksi")!) as number[];
+    setReactionTimes([...oldReactionTimes, elapsedTime]);
     localStorage.setItem(
       "listReaksi",
-      JSON.stringify([...reactionTimes, elapsedTime])
+      JSON.stringify([...oldReactionTimes, elapsedTime])
     );
     generateNewImage();
-  };
+  }, [reactionTimes]);
 
   const handleReaction = useCallback(() => {
     setShowImage(false);
@@ -98,11 +99,8 @@ const Game = () => {
       window.removeEventListener("click", onClick);
       window.removeEventListener("keypress", onKeypress);
 
-      const highestId = window.setTimeout(() => {
-        for (let i = highestId; i >= 0; i--) {
-          window.clearInterval(i);
-        }
-      }, 0);
+      clearTimeout(newImageTimer.current!);
+      clearTimeout(imageTimeoutTimer.current!);
 
       router.push("/app/results");
 
@@ -155,8 +153,6 @@ const Game = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    console.log("[onClick, onKeypress, handleReaction]");
-
     window.addEventListener("click", onClick);
     window.addEventListener("keypress", onKeypress);
     return () => {
