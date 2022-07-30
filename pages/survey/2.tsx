@@ -14,7 +14,6 @@ const SecondSurveyPage = () => {
   }, [router])
   return (
     <>
-      <Header />
       <Information>
         <p>
           Seberapa besar tingkat kelelahan Anda saat ini? (1-100){" "}

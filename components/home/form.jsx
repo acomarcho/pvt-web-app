@@ -16,18 +16,18 @@ const customStyles = {
     border: "none",
     borderRadius: "12px",
     background: "none",
-    boxShadow: "none"
+    boxShadow: "none",
   }),
   singleValue: (provided, _) => ({
     ...provided,
     color: "var(--white-2)",
   }),
-  valueContainer :(provided, _) => ({
+  valueContainer: (provided, _) => ({
     ...provided,
     background: "#3E3F58",
     padding: "12px 24px",
     color: "var(--white-2)",
-    borderRadius: "12px 0 0 12px"
+    borderRadius: "12px 0 0 12px",
   }),
   dropdownIndicator: (provided, _) => ({
     ...provided,
@@ -37,22 +37,22 @@ const customStyles = {
   indicatorsContainer: (provided, _) => ({
     ...provided,
     background: "#3E3F58",
-    borderRadius: "0 12px 12px 0"
+    borderRadius: "0 12px 12px 0",
   }),
   option: (provided, _) => ({
     ...provided,
     padding: "12px 24px",
     background: "#36384F",
-    color: "var(--white-2)"
+    color: "var(--white-2)",
   }),
   menu: (provided, _) => ({
     ...provided,
-    background: "none"
+    background: "none",
   }),
   menuList: (provided, _) => ({
     ...provided,
-    background: "none"
-  })
+    background: "none",
+  }),
 };
 
 const Form = () => {

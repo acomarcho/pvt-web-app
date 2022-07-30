@@ -14,7 +14,6 @@ const FirstSurveyPage = () => {
   }, [router])
   return (
     <>
-      <Header />
       <Information>
         <p>
           Apakah saat ini Anda dalam kondisi siap untuk bekerja?{" "}

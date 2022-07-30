@@ -1,3 +1,8 @@
+.headingContainer {
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
 .heading {
   background: var(--gradient-atlantic);
   -webkit-background-clip: text;
@@ -5,6 +10,13 @@
   background-clip: text;
   font-size: 24px;
   font-weight: 700 !important;
+  position: relative;
+  display: inline-block;
+}
+
+.underline {
+  height: 6px;
+  background: var(--gradient-atlantic);
 }
 
 @media (min-width: 768px) {

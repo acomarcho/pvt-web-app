@@ -14,8 +14,8 @@ const Buttons = (props: {prevLink: string, nextLink: string}) => {
   
   return (
     <div className={styles.buttonsContainer}>
-      <button onClick={back}>←</button>
-      <button onClick={next}>→</button>
+      <button onClick={back}>Kembali</button>
+      <button onClick={next}>Selanjutnya</button>
     </div>
   );
 };
