@@ -1,18 +1,19 @@
 import Header from "../../components/header";
 import Information from "../../components/survey/info";
-import Range from "../../components/survey/2/range";
+import Range from "../../components/survey/3/range";
 import Buttons from "../../components/survey/buttons";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-const ThirdSurveyPage = () => {
+const FourthSurveyPage = () => {
   const router = useRouter();
   useEffect(() => {
     if (
       localStorage.getItem("agreement") !== "1" ||
       !localStorage.getItem("nama") ||
       !localStorage.getItem("durasi") ||
-      !localStorage.getItem("tingkatKantuk")
+      !localStorage.getItem("tingkatKantuk") ||
+      !localStorage.getItem("tingkatLelah")
     ) {
       router.push("/");
     }
@@ -21,8 +22,8 @@ const ThirdSurveyPage = () => {
     <>
       <Information>
         <p>
-          Seberapa besar Anda membutuhkan istirahat saat ini? (1-100){" "}
-          <span className="gum">*</span>
+          Berapa tingkat kesiapan Anda untuk melakukan pekerjaan yang akan Anda
+          lakukan? (bukan kegiatan uji kelelahan) <span className="gum">*</span>
         </p>
       </Information>
       <Range />
@@ -39,7 +40,7 @@ const ThirdSurveyPage = () => {
               maxWidth: "120px",
             }}
           >
-            <strong>Sangat tidak</strong> memerlukan istirahat
+            <strong>Sangat tidak</strong> siap
           </p>
           <p
             style={{
@@ -47,13 +48,13 @@ const ThirdSurveyPage = () => {
               textAlign: "right",
             }}
           >
-            <strong>Sangat</strong> memerlukan istirahat
+            <strong>Sangat, sangat</strong> siap
           </p>
         </div>
       </Information>
-      <Buttons prevLink="/survey/2" nextLink="/survey/4" />
+      <Buttons prevLink="/survey/3" nextLink="/app" />
     </>
   );
 };
 
-export default ThirdSurveyPage;
+export default FourthSurveyPage;

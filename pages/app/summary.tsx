@@ -9,6 +9,7 @@ const Results = () => {
   const router = useRouter();
   useEffect(() => {
     if (
+      localStorage.getItem("agreement") !== "1" ||
       !localStorage.getItem("nama") ||
       !localStorage.getItem("durasi") ||
       !localStorage.getItem("tingkatKantuk")
@@ -31,12 +32,12 @@ const Results = () => {
       <Button
         text="Selesai"
         onClick={() => {
-          localStorage.removeItem('tingkatLelah');
-          localStorage.removeItem('tingkatKantuk');
-          localStorage.removeItem('nama');
-          localStorage.removeItem('listReaksi');
-          localStorage.removeItem('durasi');
-          localStorage.removeItem('kesiapanKerja');
+          localStorage.removeItem("tingkatLelah");
+          localStorage.removeItem("tingkatKantuk");
+          localStorage.removeItem("nama");
+          localStorage.removeItem("listReaksi");
+          localStorage.removeItem("durasi");
+          localStorage.removeItem("kesiapanKerja");
           router.push("/");
         }}
         marginTop="30px"
