@@ -23,7 +23,6 @@ const App = () => {
 
   return (
     <>
-      <Header />
       <div style={{marginTop: '15px'}}>
         <p><strong>Petunjuk pengujian PVT</strong></p>
         <br />

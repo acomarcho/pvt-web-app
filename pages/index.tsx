@@ -5,7 +5,6 @@ import Form from '../components/home/form';
 const Home = () => {
   return (
     <>
-      <Header />
       <Information />
       <Form />
     </>

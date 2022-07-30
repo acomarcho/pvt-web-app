@@ -4,7 +4,6 @@ import Card from "../../components/countdown/card";
 const Countdown = () => {
   return (
     <>
-      <Header />
       <Card startCount={3}/>
     </>
   );

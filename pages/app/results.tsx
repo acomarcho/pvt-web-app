@@ -19,7 +19,6 @@ const Results = () => {
     }
   }, [router])
   return <>
-    <Header />
     <Subheading />
     <ResultCard />
     <Button text='Lihat ringkasan hasil tes' onClick={() => router.push('/app/summary')} marginTop='30px'/>

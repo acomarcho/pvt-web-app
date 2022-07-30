@@ -26,7 +26,6 @@ const Results = () => {
   }, [router]);
   return (
     <>
-      <Header />
       <Subheading />
       <ResultCard />
       <Button

@@ -1,0 +1,15 @@
+.footerContainer {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+@media (min-width: 768px) {
+  .footerContainer {
+    bottom: 60px;
+    right: 60px;
+  }
+}
