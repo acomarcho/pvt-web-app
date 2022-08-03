@@ -32,7 +32,7 @@ const Range = () => {
         id="slider"
         defaultValue={sliderValue}
         value={sliderValue}
-        min={1}
+        min={0}
         max={100}
         step={0.1}
         color="#0AA4E7"
@@ -40,7 +40,7 @@ const Range = () => {
         marginTop={"45px"}
         marginBottom={"15px"}
       >
-        {[1, 20, 40, 60, 80, 100].map((num) => {
+        {[0, 20, 40, 60, 80, 100].map((num) => {
           return (
             <SliderMark value={num} mt="1" ml="-2.5" fontSize="sm" color="rgba(255, 255, 255, 0.8)" marginLeft={"-9px"} paddingTop={"8px"} key={num}>
               {num}

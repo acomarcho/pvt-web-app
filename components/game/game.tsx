@@ -74,6 +74,7 @@ const Game = () => {
   const onKeypress = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === " " || e.key === "Enter") {
+        e.preventDefault();
         if (showImage) {
           handleReaction();
         } else {
@@ -208,15 +209,13 @@ const Game = () => {
             </p>
           )}
       </div>
-      {showImage && (
-        <div style={{ marginTop: "45px" }}>
-          <img
-            style={{ width: "100%" }}
-            src="/board.png"
-            alt="checkered board"
-          />
-        </div>
-      )}
+      <div style={{ marginTop: "45px" }}>
+        <img
+          style={{ width: "100%", opacity: showImage ? "100%" : "0" }}
+          src="/board.png"
+          alt="checkered board"
+        />
+      </div>
     </div>
   );
 };

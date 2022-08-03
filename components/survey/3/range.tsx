@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 
 const Range = () => {
-  const [sliderValue, setSliderValue] = useState<number>(50);
+  const [sliderValue, setSliderValue] = useState<number>(5);
   const [showTooltip, setShowTooltip] = useState<boolean>(true);
 
   useEffect(() => {

@@ -1,5 +1,6 @@
 import path from "path";
-import moment from "moment";
+import * as moment from "moment";
+import 'moment/locale/id';
 
 const { google } = require("googleapis");
 const spreadsheetId = "1wz7AZIbQ4zEDo7W4JH252_TXP42ScXptlopLlIwKvOI";
@@ -50,7 +51,7 @@ export default async function handler(req, res) {
               nama,
               device,
               date.format('Do MMMM YYYY'),
-              date.format('hh:mm:ss[+07:00]'),
+              date.format('HH:mm:ss[+07:00]'),
               durasi,
               tingkatKantuk,
               tingkatLelah,
