@@ -95,7 +95,7 @@ const Form = () => {
       setIsDurasiValid(true);
     }
     if (success) {
-      localStorage.setItem("nama", nama === "" ? "N/A" : nama);
+      localStorage.setItem("nama", nama);
       localStorage.setItem("durasi", durasi.value);
       router.push("/survey/1");
     }

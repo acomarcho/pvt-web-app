@@ -11,7 +11,6 @@ const Results = () => {
   useEffect(() => {
     if (
       localStorage.getItem("agreement") !== "1" ||
-      !localStorage.getItem("nama") ||
       !localStorage.getItem("durasi") ||
       !localStorage.getItem("tingkatKantuk")
     ) {

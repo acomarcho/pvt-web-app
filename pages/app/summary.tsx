@@ -11,7 +11,6 @@ const Results = () => {
   useEffect(() => {
     if (
       localStorage.getItem("agreement") !== "1" ||
-      !localStorage.getItem("nama") ||
       !localStorage.getItem("durasi") ||
       !localStorage.getItem("tingkatKantuk")
     ) {
@@ -49,6 +48,8 @@ const Results = () => {
             localStorage.removeItem("listReaksi");
             localStorage.removeItem("durasi");
             localStorage.removeItem("kesiapanKerja");
+            localStorage.removeItem("agreement")
+            localStorage.removeItem("device")
             router.push("/");
           }}
           marginTop="30px"
