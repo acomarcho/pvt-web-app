@@ -34,9 +34,12 @@ const App = () => {
         </p>
         <br />
         <p>
-          Silakan tekan tombol space bar menggunakan tangan kanan atau kiri
-          (yang dirasa dapat cepat merespon stimulus) setiap kali muncul gambar
-          kotak hitam dan putih.
+          Jika anda menggunakan <strong>KOMPUTER/LAPTOP</strong>, silahkan tekan
+          tombol space bar menggunakan tangan kanan atau kiri (yang dirasa dapat
+          cepat merespon stimulus) setiap kali muncul gambar kotak hitam dan
+          putih. Jika anda menggunakan <strong>HANDPHONE/TABLET</strong>,
+          silahkan sentuh pada bagian mana saja di layar menggunakan jari yang
+          anda rasa nyaman dan dapat merespon dengan cepat.
         </p>
         <br />
         <p>
