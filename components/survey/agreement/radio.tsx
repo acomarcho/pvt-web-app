@@ -6,13 +6,16 @@ const RadioButtons = ({
 }: {
   setIsDisabled: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const [value, setValue] = useState<string>("1");
+  const [value, setValue] = useState<string>("2");
 
   useEffect(() => {
+    if (!localStorage.getItem("agreement") || localStorage.getItem("agreement") === "2") {
+      setIsDisabled(true);
+    }
     if (localStorage.getItem("agreement")) {
       setValue(localStorage.getItem("agreement") as string);
     } else {
-      localStorage.setItem("agreement", "0");
+      localStorage.setItem("agreement", "2");
     }
   }, []);
 
@@ -34,7 +37,7 @@ const RadioButtons = ({
             display: "flex",
             flexDirection: "column",
             gap: " 9px",
-            marginTop: "30px",
+            marginTop: "15px",
           }}
         >
           <Radio value="1">

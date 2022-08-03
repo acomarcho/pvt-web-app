@@ -1,14 +1,13 @@
 import Header from "../../components/header";
 import Information from "../../components/survey/info";
 import RadioButtons from "../../components/survey/agreement/radio";
+import DeviceRadioButtons from "../../components/survey/agreement/radio2";
 import Buttons from "../../components/survey/buttons";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
 const FirstSurveyPage = () => {
-  const [isDisabled, setIsDisabled] = useState<boolean>(
-    localStorage.getItem("agreement") === "1" ? false : true
-  );
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
   return (
     <>
@@ -19,15 +18,9 @@ const FirstSurveyPage = () => {
         </p>
       </Information>
       <Information>
-        <p>
-          Jika anda menggunakan <strong>KOMPUTER/LAPTOP</strong>, silahkan tekan tombol space bar
-          menggunakan tangan kanan atau kiri (yang dirasa dapat cepat merespon
-          stimulus) setiap kali muncul gambar kotak hitam dan putih. Jika anda
-          menggunakan <strong>HANDPHONE/TABLET</strong>, silahkan sentuh pada bagian mana saja di
-          layar menggunakan jari yang anda rasa nyaman dan dapat merespon dengan
-          cepat
-        </p>
+        <p>Device apa yang anda gunakan untuk pengujian ini? <span className="gum">*</span></p>
       </Information>
+      <DeviceRadioButtons />
       <Information>
         <p>
           Dengan menggunakan aplikasi ini, Anda berarti telah menyetujui

@@ -108,6 +108,7 @@ const Game = () => {
 
       /* Simpan hasil! */
       const nama = localStorage.getItem("nama");
+      const device = localStorage.getItem("device");
       const durasi = localStorage.getItem("durasi");
       const tingkatKantuk = localStorage.getItem("tingkatKantuk");
       const tingkatLelah = localStorage.getItem("tingkatLelah");
@@ -127,6 +128,7 @@ const Game = () => {
 
       await axios.post("/api/sheets", {
         nama,
+        device,
         durasi,
         tingkatKantuk,
         tingkatLelah,

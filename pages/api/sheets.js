@@ -8,6 +8,7 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     const {
       nama,
+      device,
       durasi,
       tingkatKantuk,
       tingkatLelah,
@@ -47,6 +48,7 @@ export default async function handler(req, res) {
           values: [
             [
               nama,
+              device,
               date.format('Do MMMM YYYY'),
               date.format('hh:mm:ss[+07:00]'),
               durasi,

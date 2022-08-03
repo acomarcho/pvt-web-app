@@ -96,6 +96,8 @@ const Results = () => {
             localStorage.removeItem("listReaksi");
             localStorage.removeItem("durasi");
             localStorage.removeItem("kesiapanKerja");
+            localStorage.removeItem("agreement")
+            localStorage.removeItem("device")
             router.push("/");
           }}
           marginTop="30px"
