@@ -21,6 +21,7 @@ const Game = () => {
   const [showImage, setShowImage] = useState<boolean>(false);
   const [lastShown, setLastShown] = useState<number>(0);
   const [reactionTimes, setReactionTimes] = useState<number[]>([]);
+  const [isPhone, setIsPhone] = useState<boolean>(true);
 
   const generateNewImage = () => {
     newImageTimer.current = setTimeout(() => {
@@ -39,7 +40,9 @@ const Game = () => {
     /* Reaksi gagal! */
     setShowImage(false);
     const elapsedTime = timeoutTime * 1000;
-    const oldReactionTimes = JSON.parse(localStorage.getItem("listReaksi")!) as number[];
+    const oldReactionTimes = JSON.parse(
+      localStorage.getItem("listReaksi")!
+    ) as number[];
     setReactionTimes([...oldReactionTimes, elapsedTime]);
     localStorage.setItem(
       "listReaksi",
@@ -90,6 +93,15 @@ const Game = () => {
     ) {
       router.push("/");
       return;
+    }
+
+    if (
+      localStorage.getItem("device") === "Laptop" ||
+      localStorage.getItem("device") === "Komputer"
+    ) {
+      setIsPhone(false);
+    } else {
+      setIsPhone(true);
     }
 
     localStorage.setItem("listReaksi", JSON.stringify([]));
@@ -165,10 +177,17 @@ const Game = () => {
   return (
     <div>
       <div style={{ marginTop: "15px" }}>
-        {reactionTimes.length === 0 && (
+        {reactionTimes.length === 0 && !isPhone && (
           <p>
-            Silakan tekan tombol space bar, enter, atau klik kiri pada mouse
-            setiap kali muncul gambar garis hitam dan putih.
+            Silakan tekan tombol space bar menggunakan tangan kanan atau kiri
+            (yang dirasa dapat cepat merespon stimulus) setiap kali muncul
+            gambar kotak hitam dan putih.
+          </p>
+        )}
+        {reactionTimes.length === 0 && isPhone && (
+          <p>
+            Silakan sentuh pada bagian mana saja di layar menggunakan jari yang
+            Anda rasa nyaman dan dapat merespon dengan cepat.
           </p>
         )}
         {reactionTimes.length > 0 &&

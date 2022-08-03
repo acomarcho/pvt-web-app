@@ -7,6 +7,18 @@ const App = () => {
   const router = useRouter();
 
   const [duration, setDuration] = useState<string>("0");
+  const [isPhone, setIsPhone] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (
+      localStorage.getItem("device") === "Laptop" ||
+      localStorage.getItem("device") === "Komputer"
+    ) {
+      setIsPhone(false);
+    } else {
+      setIsPhone(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (
@@ -32,18 +44,19 @@ const App = () => {
           <strong>Petunjuk pengujian PVT</strong>
         </p>
         <br />
-        <p>
-          Jika Anda menggunakan <strong>KOMPUTER/LAPTOP</strong>, silahkan tekan
-          tombol space bar menggunakan tangan kanan atau kiri (yang dirasa dapat
-          cepat merespon stimulus) setiap kali muncul gambar kotak hitam dan
-          putih.
-        </p>
-        <br /> 
-        <p>
-          Jika Anda menggunakan <strong>HANDPHONE/TABLET</strong>,
-          silahkan sentuh pada bagian mana saja di layar menggunakan jari yang
-          anda rasa nyaman dan dapat merespon dengan cepat.
-        </p>
+        {!isPhone && (
+          <p>
+            Silakan tekan tombol space bar menggunakan tangan kanan atau kiri
+            (yang dirasa dapat cepat merespon stimulus) setiap kali muncul
+            gambar kotak hitam dan putih.
+          </p>
+        )}
+        {isPhone && (
+          <p>
+            Silakan sentuh pada bagian mana saja di layar menggunakan jari yang
+            Anda rasa nyaman dan dapat merespon dengan cepat.
+          </p>
+        )}
         <br />
         <p>
           Anda akan mengerjakan tes selama{" "}
