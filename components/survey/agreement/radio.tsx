@@ -1,22 +1,17 @@
 import { useState, useEffect } from "react";
 import { ChakraProvider, Radio, RadioGroup } from "@chakra-ui/react";
+import { useRouter } from 'next/router';
 
 const RadioButtons = ({
   setIsDisabled,
 }: {
   setIsDisabled: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const [value, setValue] = useState<string>("2");
+  const [value, setValue] = useState<string>("1");
+  const router = useRouter();
 
   useEffect(() => {
-    if (!localStorage.getItem("agreement") || localStorage.getItem("agreement") === "2") {
-      setIsDisabled(true);
-    }
-    if (localStorage.getItem("agreement")) {
-      setValue(localStorage.getItem("agreement") as string);
-    } else {
-      localStorage.setItem("agreement", "2");
-    }
+    localStorage.setItem("agreement", "1");
   }, []);
 
   const onChange = (v: string) => {
@@ -26,6 +21,7 @@ const RadioButtons = ({
       setIsDisabled(false);
     } else {
       setIsDisabled(true);
+      router.push('/');
     }
   };
 

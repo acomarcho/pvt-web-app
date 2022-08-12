@@ -33,15 +33,15 @@ const Range = () => {
         defaultValue={sliderValue}
         value={sliderValue}
         min={1}
-        max={9}
+        max={10}
         color="#0AA4E7"
         onChange={(v) => onChange(v)}
         marginTop={"45px"}
         marginBottom={"15px"}
       >
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => {
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => {
           return (
-            <SliderMark value={num} mt="1" ml="-2.5" fontSize="sm" color="rgba(255, 255, 255, 0.8)" marginLeft={"-4px"} paddingTop={"8px"} key={num}>
+            <SliderMark value={num} mt="1" ml="-2.5" fontSize="sm" color="rgba(255, 255, 255, 0.8)" marginLeft={"-5px"} paddingTop={"8px"} key={num}>
               {num}
             </SliderMark>
           );

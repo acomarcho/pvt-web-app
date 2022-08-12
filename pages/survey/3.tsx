@@ -19,7 +19,7 @@ const SecondSurveyPage = () => {
     <>
       <Information>
         <p>
-          Seberapa besar tingkat kantuk Anda saat ini? (1-9){" "}
+          Seberapa besar tingkat kantuk Anda saat ini? (1-10){" "}
           <span className="gum">*</span>
         </p>
       </Information>
@@ -37,11 +37,11 @@ const SecondSurveyPage = () => {
             4 = <strong>Agak</strong> waspada
           </p>
           <p>
-            5 = <strong>Tidak</strong> waspada, namun juga{" "}
-            <strong>tidak</strong> mengantuk
+            5 = <strong>Tidak</strong> dalam keadaan waspada, namun juga{" "}
+            <strong>tidak</strong> dalam keadaan mengantuk mengantuk
           </p>
           <p>
-            6 = Muncul <strong>sedikit</strong> tanda mengantuk
+            6 = Ada <strong>sedikit</strong> rasa kantuk
           </p>
           <p>
             7 = Mengantuk, tapi <strong>tidak butuh usaha</strong> untuk tetap
@@ -51,8 +51,12 @@ const SecondSurveyPage = () => {
             8 = Mengantuk, <strong>butuh usaha</strong> untuk tetap terjaga
           </p>
           <p>
-            9 = <strong>Sangat</strong> mengantuk, <strong>sulit</strong> untuk
-            tetap terjaga
+            9 = <strong>Sangat</strong> mengantuk,{" "}
+            <strong>perlu usaha besar</strong> untuk tetap terjaga
+          </p>
+          <p>
+            10 = <strong>Sangat</strong>, <strong>sangat</strong> mengantuk,{" "}
+            <strong>sangat sulit</strong> untuk terjaga
           </p>
         </>
       </Information>
