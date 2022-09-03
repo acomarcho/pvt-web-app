@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Subheading from "../../components/summary/subheading";
 import ResultCard from "../../components/summary/resultCard";
 import Button from "../../components/button";
+import AuthWrapper from "../../components/authwrapper";
 
 const Results = () => {
   const router = useRouter();
@@ -10,9 +11,11 @@ const Results = () => {
 
   useEffect(() => {
     if (
-      localStorage.getItem("agreement") !== "1" ||
       !localStorage.getItem("durasi") ||
-      !localStorage.getItem("tingkatKantuk")
+      !localStorage.getItem("durasiTidur") ||
+      !localStorage.getItem("tingkatKantuk") ||
+      !localStorage.getItem("kesiapanKerja") ||
+      !localStorage.getItem("tingkatLelah")
     ) {
       router.push("/");
       return;
@@ -27,7 +30,7 @@ const Results = () => {
   }, [router]);
 
   useEffect(() => {
-    if (localStorage.getItem("durasi") === "3") {
+    if (localStorage.getItem("durasi") === "1") {
       setIsLatihan(true);
     } else {
       setIsLatihan(false);
@@ -48,8 +51,8 @@ const Results = () => {
             localStorage.removeItem("listReaksi");
             localStorage.removeItem("durasi");
             localStorage.removeItem("kesiapanKerja");
-            localStorage.removeItem("agreement")
-            localStorage.removeItem("device")
+            localStorage.removeItem("agreement");
+            localStorage.removeItem("device");
             router.push("/");
           }}
           marginTop="30px"
@@ -58,52 +61,49 @@ const Results = () => {
     );
   } else {
     return (
-      <>
-        <Subheading />
-        <ResultCard />
-        <div style={{
-          marginTop: "15px"
-        }}>
-          <p>Anda sudah menyelesaikan latihan!</p>
+      <AuthWrapper>
+        <>
+          <Subheading />
+          <ResultCard />
           <div
             style={{
-              display: "flex",
               marginTop: "15px",
-              gap: "15px",
             }}
           >
-            <Button
-              text="Mulai tes 5 menit"
-              onClick={() => {
-                localStorage.setItem("durasi", "5");
-                router.push("/app");
+            <p>Anda sudah menyelesaikan latihan!</p>
+            <div
+              style={{
+                display: "flex",
+                marginTop: "15px",
+                gap: "15px",
               }}
-            />
-            <Button
-              text="Mulai tes 10 menit"
-              onClick={() => {
-                localStorage.setItem("durasi", "10");
-                router.push("/app");
-              }}
-            />
+            >
+              <Button
+                text="Mulai tes 3 menit"
+                onClick={() => {
+                  localStorage.setItem("durasi", "3");
+                  router.push("/app");
+                }}
+              />
+            </div>
           </div>
-        </div>
-        <Button
-          text="Selesai"
-          onClick={() => {
-            localStorage.removeItem("tingkatLelah");
-            localStorage.removeItem("tingkatKantuk");
-            localStorage.removeItem("nama");
-            localStorage.removeItem("listReaksi");
-            localStorage.removeItem("durasi");
-            localStorage.removeItem("kesiapanKerja");
-            localStorage.removeItem("agreement")
-            localStorage.removeItem("device")
-            router.push("/");
-          }}
-          marginTop="30px"
-        />
-      </>
+          <Button
+            text="Selesai"
+            onClick={() => {
+              localStorage.removeItem("tingkatLelah");
+              localStorage.removeItem("tingkatKantuk");
+              localStorage.removeItem("nama");
+              localStorage.removeItem("listReaksi");
+              localStorage.removeItem("durasi");
+              localStorage.removeItem("kesiapanKerja");
+              localStorage.removeItem("agreement");
+              localStorage.removeItem("device");
+              router.push("/");
+            }}
+            marginTop="30px"
+          />
+        </>
+      </AuthWrapper>
     );
   }
 };

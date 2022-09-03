@@ -5,9 +5,8 @@ import { useRouter } from "next/router";
 import Select from "react-select";
 
 const options = [
-  { value: "3", label: "Latihan (durasi 3 menit)" },
-  { value: "5", label: "5 menit" },
-  { value: "10", label: "10 menit" },
+  { value: "1", label: "Latihan (durasi 1 menit)" },
+  { value: "3", label: "3 menit" }
 ];
 
 const customStyles = {
@@ -64,22 +63,16 @@ const Form = () => {
 
   useEffect(() => {
     setNama(localStorage.getItem("nama") || "");
+    if (localStorage.getItem("durasi") === "1") {
+      setDurasi({
+        value: "1",
+        label: "Latihan (durasi 1 menit)",
+      });
+    }
     if (localStorage.getItem("durasi") === "3") {
       setDurasi({
         value: "3",
-        label: "Latihan (durasi 3 menit)",
-      });
-    }
-    if (localStorage.getItem("durasi") === "5") {
-      setDurasi({
-        value: "5",
-        label: "5 menit",
-      });
-    }
-    if (localStorage.getItem("durasi") === "10") {
-      setDurasi({
-        value: "10",
-        label: "10 menit",
+        label: "3 menit",
       });
     }
   }, []);

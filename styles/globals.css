@@ -7,7 +7,8 @@
   --white: rgb(255, 255, 255);
   --white-2: rgba(255, 255, 255, 0.8);
   --gum: #E666B3;
-  --primary-btn: linear-gradient(180deg, #5561FF 0%, #3643FC 100%);
+  --primary-btn: linear-gradient(180deg, rgb(85, 97, 255) 0%, #3643FC 100%);
+  --red-btn: linear-gradient(180deg, hsl(347, 100%, 67%) 0%, hsl(347, 97%, 60%) 100%);
   --super-shadow: 0px 100px 126px rgba(0, 0, 0, 0.15), 0px 41.7776px 52.6398px rgba(0, 0, 0, 0.107828), 0px 22.3363px 28.1437px rgba(0, 0, 0, 0.0894161), 0px 12.5216px 15.7772px rgba(0, 0, 0, 0.075), 0px 6.6501px 8.37913px rgba(0, 0, 0, 0.0605839), 0px 2.76726px 3.48674px rgba(0, 0, 0, 0.0421718);
   --blueberry: #0AA4E7;
   --blueberry-fade: rgba(10, 164, 231, 0.3);

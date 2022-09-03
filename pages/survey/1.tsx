@@ -1,35 +1,81 @@
-import Header from "../../components/header";
 import Information from "../../components/survey/info";
-import DeviceRadioButtons from "../../components/survey/agreement/radio2";
 import Buttons from "../../components/survey/buttons";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Radio from "../../components/survey/tidur/radio";
+import styles from "./1.module.css";
+import AuthWrapper from "../../components/authwrapper";
 
-const FirstSurveyPage = () => {
+const TingkatKantukPage = () => {
+  const router = useRouter();
+  const [durasiTidur, setDurasiTidur] = useState<string>("");
+
+  useEffect(() => {
+    if (localStorage.getItem("durasiTidur")) {
+      setDurasiTidur(localStorage.getItem("durasiTidur") as string);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!localStorage.getItem("durasi")) {
+      router.push("/");
+    }
+  }, [router]);
+
+  useEffect(() => {
+    localStorage.setItem("durasiTidur", durasiTidur);
+  }, [durasiTidur]);
+
   return (
-    <>
-      <Information>
-        <>
-          <p>
-            Aplikasi ini dapat digunakan untuk menilai kelelahan terhadap aspek
-            psikomotorik.
-          </p>
-          <br />
-          <p>
-            Pengujian dilakukan dengan cara melakukan respons terhadap stimulus
-            berupa gambar kotak hitam putih. Bentuk respons disesuaikan dengan
-            device yang digunakan Anda.
-          </p>
-        </>
-      </Information>
-      <Information>
-        <p>
-          Device apa yang Anda gunakan untuk pengujian ini?{" "}
+    <AuthWrapper>
+      <>
+        <form className={styles.formContainer}>
+          <div className={styles.formItem}>
+            <label htmlFor="durasiTidur">
+              Berapa lama durasi tidur Anda dalam 24 jam terakhir? (dalam jam){" "}
+              <span className="gum">*</span>
+            </label>
+            <input
+              type="number"
+              name="durasiTidur"
+              id="durasiTidur"
+              value={durasiTidur}
+              onChange={(e) => setDurasiTidur(e.target.value)}
+            />
+            {(parseInt(durasiTidur) < 0 || parseInt(durasiTidur) > 24) && (
+              <p className="gum">Durasi tidak valid!</p>
+            )}
+          </div>
+        </form>
+        <p style={{ marginTop: "30px" }}>
+          Bagaimana kualitas tidur Anda dalam 24 jam terakhir?{" "}
           <span className="gum">*</span>
         </p>
-      </Information>
-      <DeviceRadioButtons />
-      <Buttons prevLink="/" nextLink="/survey/2" />
-    </>
+        <Radio />
+        <div className={styles.buttonsContainer}>
+          <button
+            onClick={() => {
+              router.push("/");
+            }}
+          >
+            Kembali
+          </button>
+          <button
+            onClick={() => {
+              router.push("/survey/2");
+            }}
+            disabled={
+              durasiTidur === "" ||
+              parseInt(durasiTidur) < 0 ||
+              parseInt(durasiTidur) > 24
+            }
+          >
+            Selanjutnya
+          </button>
+        </div>
+      </>
+    </AuthWrapper>
   );
 };
 
-export default FirstSurveyPage;
+export default TingkatKantukPage;

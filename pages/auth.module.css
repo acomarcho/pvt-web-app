@@ -1,0 +1,62 @@
+.authContainer {
+  margin-top: 15px;
+}
+
+.formContainer {
+  margin-top: 30px;
+}
+
+.formItem {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  gap: 6px;
+}
+
+.formItem input {
+  padding: 12px 24px;
+  background: none;
+  border: 1px solid var(--secondary);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.formItem ::-ms-reveal {
+  filter: invert(100%);
+}
+
+/* Chrome, Safari, Edge, Opera */
+.formItem input::-webkit-outer-spin-button,
+.formItem input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.formItem input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.buttonContainer {
+  margin-top: 30px;
+}
+
+.buttonContainer button {
+  background: var(--primary-btn);
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  transition: all 0.3s linear;
+  font-size: 16px;
+}
+
+.buttonContainer button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.buttonContainer button:disabled {
+  opacity: 0.3;
+}

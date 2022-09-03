@@ -17,11 +17,11 @@ const Game = () => {
   const router = useRouter();
   const newImageTimer = useRef<NodeJS.Timeout | null>(null);
   const imageTimeoutTimer = useRef<NodeJS.Timeout | null>(null);
+  const endGameTimer = useRef<NodeJS.Timeout | null>(null);
 
   const [showImage, setShowImage] = useState<boolean>(false);
   const [lastShown, setLastShown] = useState<number>(0);
   const [reactionTimes, setReactionTimes] = useState<number[]>([]);
-  const [isPhone, setIsPhone] = useState<boolean>(true);
 
   const generateNewImage = () => {
     newImageTimer.current = setTimeout(() => {
@@ -88,44 +88,38 @@ const Game = () => {
 
   useEffect(() => {
     if (
-      localStorage.getItem("agreement") !== "1" ||
       !localStorage.getItem("durasi") ||
-      !localStorage.getItem("tingkatKantuk")
+      !localStorage.getItem("durasiTidur") ||
+      !localStorage.getItem("tingkatKantuk") ||
+      !localStorage.getItem("kesiapanKerja") ||
+      !localStorage.getItem("tingkatLelah")
     ) {
       router.push("/");
       return;
     }
 
-    if (
-      localStorage.getItem("device") === "Laptop" ||
-      localStorage.getItem("device") === "Komputer"
-    ) {
-      setIsPhone(false);
-    } else {
-      setIsPhone(true);
-    }
-
     localStorage.setItem("listReaksi", JSON.stringify([]));
 
-    const timer = setTimeout(async () => {
+    endGameTimer.current = setTimeout(async () => {
       window.removeEventListener("click", onClick);
       window.removeEventListener("keypress", onKeypress);
 
       clearTimeout(newImageTimer.current!);
       clearTimeout(imageTimeoutTimer.current!);
 
-      router.push("/app/results");
+      router.push("/app/summary");
 
       console.log("Saving data to spreadsheet ...");
 
       /* Simpan hasil! */
       const nama = localStorage.getItem("nama");
-      const device = localStorage.getItem("device");
       const durasi = localStorage.getItem("durasi");
       const tingkatKantuk = localStorage.getItem("tingkatKantuk");
       const tingkatLelah = localStorage.getItem("tingkatLelah");
       const kesiapanKerja = localStorage.getItem("kesiapanKerja");
       const reactions = localStorage.getItem("listReaksi");
+      const durasiTidur = localStorage.getItem("durasiTidur");
+      const kualitasTidur = localStorage.getItem("kualitasTidur");
       const listReaksi = JSON.parse(
         localStorage.getItem("listReaksi") as string
       ) as number[];
@@ -140,8 +134,9 @@ const Game = () => {
 
       await axios.post("/api/sheets", {
         nama,
-        device,
         durasi,
+        durasiTidur,
+        kualitasTidur,
         tingkatKantuk,
         tingkatLelah,
         kesiapanKerja,
@@ -160,7 +155,7 @@ const Game = () => {
     generateNewImage();
 
     return () => {
-      clearTimeout(timer);
+      clearTimeout(endGameTimer.current!);
       window.removeEventListener("click", onClick);
       window.removeEventListener("keypress", onKeypress);
     };
@@ -175,20 +170,27 @@ const Game = () => {
     };
   }, [onClick, onKeypress, handleReaction]);
 
+  const exitGame = () => {
+    window.removeEventListener("click", onClick);
+    window.removeEventListener("keypress", onKeypress);
+    clearTimeout(newImageTimer.current!);
+    clearTimeout(imageTimeoutTimer.current!);
+    clearTimeout(endGameTimer.current!);
+    router.push('/app')
+  }
+
   return (
     <div>
-      <div style={{ marginTop: "15px" }}>
-        {reactionTimes.length === 0 && !isPhone && (
+      <div
+        style={{
+          marginTop: "15px",
+        }}
+      >
+        {reactionTimes.length === 0 && (
           <p>
             Silakan tekan tombol space bar menggunakan tangan kanan atau kiri
             (yang dirasa dapat cepat merespon stimulus) setiap kali muncul
             gambar kotak hitam dan putih.
-          </p>
-        )}
-        {reactionTimes.length === 0 && isPhone && (
-          <p>
-            Silakan sentuh pada bagian mana saja di layar menggunakan jari yang
-            Anda rasa nyaman dan dapat merespon dengan cepat.
           </p>
         )}
         {reactionTimes.length > 0 &&
@@ -209,6 +211,22 @@ const Game = () => {
             </p>
           )}
       </div>
+      <button
+        style={{
+          background:
+            "linear-gradient(180deg, hsl(347, 100%, 67%) 0%, hsl(347, 97%, 60%) 100%)",
+          color: "rgb(255, 255, 255)",
+          border: "none",
+          borderRadius: "12px",
+          padding: "12px 24px",
+          fontSize: "16px",
+          cursor: "pointer",
+          marginTop: "15px "
+        }}
+        onClick={exitGame}
+      >
+        Keluar dari tes
+      </button>
       <div style={{ marginTop: "45px" }}>
         <img
           style={{ width: "100%", opacity: showImage ? "100%" : "0" }}
