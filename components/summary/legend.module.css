@@ -12,24 +12,24 @@
 }
 
 .green {
-  width: 9px;
+  width: 18px;
   height: 9px;
-  background-color: #3eebbe;
-  border-radius: 50%;
+  background-color: rgb(0, 255, 0);
+  /* border-radius: 50%; */
 }
 
 .yellow {
-  width: 9px;
+  width: 18px;
   height: 9px;
-  background-color: #dfeb3d;
-  border-radius: 50%;
+  background-color: rgb(255, 255, 0);
+  /* border-radius: 50%; */
 }
 
 .red {
-  width: 9px;
+  width: 18px;
   height: 9px;
-  background-color: #e666b3;
-  border-radius: 50%;
+  background-color: rgb(255, 0, 0);
+  /* border-radius: 50%; */
 }
 
 .legendContainer h2 {

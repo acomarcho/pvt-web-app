@@ -91,7 +91,6 @@ const Game = () => {
       !localStorage.getItem("durasi") ||
       !localStorage.getItem("durasiTidur") ||
       !localStorage.getItem("tingkatKantuk") ||
-      !localStorage.getItem("kesiapanKerja") ||
       !localStorage.getItem("tingkatLelah")
     ) {
       router.push("/");
@@ -116,7 +115,6 @@ const Game = () => {
       const durasi = localStorage.getItem("durasi");
       const tingkatKantuk = localStorage.getItem("tingkatKantuk");
       const tingkatLelah = localStorage.getItem("tingkatLelah");
-      const kesiapanKerja = localStorage.getItem("kesiapanKerja");
       const reactions = localStorage.getItem("listReaksi");
       const durasiTidur = localStorage.getItem("durasiTidur");
       const kualitasTidur = localStorage.getItem("kualitasTidur");
@@ -139,7 +137,6 @@ const Game = () => {
         kualitasTidur,
         tingkatKantuk,
         tingkatLelah,
-        kesiapanKerja,
         reactions,
         banyakPercobaan,
         minorLapses,

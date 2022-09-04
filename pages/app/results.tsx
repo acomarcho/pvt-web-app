@@ -14,7 +14,6 @@ const Results = () => {
       !localStorage.getItem("durasi") ||
       !localStorage.getItem("durasiTidur") ||
       !localStorage.getItem("tingkatKantuk") ||
-      !localStorage.getItem("kesiapanKerja") ||
       !localStorage.getItem("tingkatLelah")
     ) {
       router.push("/");

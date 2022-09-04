@@ -27,7 +27,7 @@ const IstirahatPage = () => {
           </p>
         </Information>
         <Radio />
-        <Buttons prevLink="/survey/2" nextLink="/survey/4" />
+        <Buttons prevLink="/survey/2" nextLink="/app" />
       </>
     </AuthWrapper>
   );
