@@ -176,8 +176,8 @@ const Game = () => {
     clearTimeout(newImageTimer.current!);
     clearTimeout(imageTimeoutTimer.current!);
     clearTimeout(endGameTimer.current!);
-    router.push('/app')
-  }
+    router.push("/app");
+  };
 
   return (
     <div>
@@ -211,6 +211,13 @@ const Game = () => {
             </p>
           )}
       </div>
+      <div style={{ marginTop: "45px" }}>
+        <img
+          style={{ width: "100%", opacity: showImage ? "100%" : "0" }}
+          src="/board.png"
+          alt="checkered board"
+        />
+      </div>
       <button
         style={{
           background:
@@ -221,19 +228,12 @@ const Game = () => {
           padding: "12px 24px",
           fontSize: "16px",
           cursor: "pointer",
-          marginTop: "15px "
+          marginTop: "15px ",
         }}
         onClick={exitGame}
       >
         Keluar dari tes
       </button>
-      <div style={{ marginTop: "45px" }}>
-        <img
-          style={{ width: "100%", opacity: showImage ? "100%" : "0" }}
-          src="/board.png"
-          alt="checkered board"
-        />
-      </div>
     </div>
   );
 };

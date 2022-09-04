@@ -1,6 +1,6 @@
 import Header from "../../components/header";
 import Information from "../../components/survey/info";
-import Range from "../../components/survey/2/range";
+import Radio from "../../components/survey/2/radio";
 import Buttons from "../../components/survey/buttons";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -22,36 +22,11 @@ const IstirahatPage = () => {
       <>
         <Information>
           <p>
-            Seberapa besar Anda membutuhkan istirahat saat ini? (0-100){" "}
+            Seberapa banyak Anda membutuhkan istirahat saat ini?{" "}
             <span className="gum">*</span>
           </p>
         </Information>
-        <Range />
-        <Information marginTop="30px">
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-start",
-            }}
-          >
-            <p
-              style={{
-                maxWidth: "120px",
-              }}
-            >
-              <strong>Sangat tidak</strong> memerlukan istirahat
-            </p>
-            <p
-              style={{
-                maxWidth: "120px",
-                textAlign: "right",
-              }}
-            >
-              <strong>Sangat</strong> memerlukan istirahat
-            </p>
-          </div>
-        </Information>
+        <Radio />
         <Buttons prevLink="/survey/2" nextLink="/survey/4" />
       </>
     </AuthWrapper>

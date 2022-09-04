@@ -48,6 +48,10 @@ const App = () => {
           </div>
           <br />
           <p>
+            Untuk keluar dari tes, silakan scroll ke bawah lalu tekan tombol 'Keluar'.
+          </p>
+          <br />
+          <p>
             Anda akan mengerjakan tes selama{" "}
             <span className="blueberry">{duration} menit</span>.
           </p>
