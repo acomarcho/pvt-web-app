@@ -37,3 +37,4 @@ yarn-error.log*
 credentials.json
 .vercel
 .vercel_bkup
+.vercel

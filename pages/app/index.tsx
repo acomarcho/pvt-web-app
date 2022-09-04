@@ -48,7 +48,7 @@ const App = () => {
           </div>
           <br />
           <p>
-            Untuk keluar dari tes, silakan scroll ke bawah lalu tekan tombol 'Keluar'.
+            Untuk keluar dari tes, silakan scroll ke bawah lalu tekan tombol &apos;Keluar&apos;.
           </p>
           <br />
           <p>

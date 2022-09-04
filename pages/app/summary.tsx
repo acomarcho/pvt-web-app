@@ -4,6 +4,7 @@ import Subheading from "../../components/summary/subheading";
 import ResultCard from "../../components/summary/resultCard";
 import Button from "../../components/button";
 import AuthWrapper from "../../components/authwrapper";
+import Legend from "../../components/summary/legend"
 
 const Results = () => {
   const router = useRouter();
@@ -65,6 +66,7 @@ const Results = () => {
         <>
           <Subheading />
           <ResultCard />
+          <Legend />
           <div
             style={{
               marginTop: "15px",

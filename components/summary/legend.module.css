@@ -1,21 +1,13 @@
-.card {
-  background: var(--card);
+.legendContainer {
+  margin-top: 15px;
   padding: 30px;
+  background: var(--card);
   border-radius: 24px;
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
 }
 
-.cardInfo {
+.legendContent {
   display: flex;
-  justify-content: space-between;
-}
-
-.cardValue {
-  display: flex;
-  gap: 15px;
+  gap: 9px;
   align-items: center;
 }
 
@@ -38,4 +30,9 @@
   height: 9px;
   background-color: #e666b3;
   border-radius: 50%;
+}
+
+.legendContainer h2 {
+  color: var(--white-2);
+  margin-bottom: 15px;
 }
