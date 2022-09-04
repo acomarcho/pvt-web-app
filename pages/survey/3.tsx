@@ -22,7 +22,7 @@ const IstirahatPage = () => {
       <>
         <Information>
           <p>
-            Seberapa banyak Anda membutuhkan istirahat saat ini?{" "}
+            Seberapa banyak Anda memerlukan istirahat saat ini?{" "}
             <span className="gum">*</span>
           </p>
         </Information>
