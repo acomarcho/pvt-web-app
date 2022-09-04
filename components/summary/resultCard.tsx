@@ -59,15 +59,6 @@ const statistics: Statistic[] = [
     toFixed: 3,
   },
   {
-    name: "Mean 1/RT",
-    description: "1 dibagi rata-rata waktu reaksi",
-    func: get1OverMeanRT,
-    green: 0.0028,
-    yellow: 0.0024,
-    unit: "/ms",
-    toFixed: 5,
-  },
-  {
     name: "Fastest 10% RT",
     description: "Rata-rata persentil 10 waktu reaksi tercepat",
     func: getFastest10RT,
