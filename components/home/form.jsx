@@ -97,11 +97,11 @@ const Form = () => {
   return (
     <form className={styles.formContainer}>
       <div className={styles.formItem}>
-        <label htmlFor="nama">ID</label>
+        <label htmlFor="nama">ID Pengendara</label>
         <input
           id="nama"
           type="text"
-          placeholder="ID"
+          placeholder="ID Pengendara"
           onChange={(e) => {
             setNama(e.target.value);
           }}

@@ -10,10 +10,11 @@ export default async function handler(req, res) {
     const {
       nama,
       durasi,
-      durasiTidur,
-      kualitasTidur,
+      durasiTidurRumah,
+      kualitasTidurRumah,
+      durasiTidurKendaraan,
+      kualitasTidurKendaraan,
       tingkatKantuk,
-      tingkatLelah,
       reactions,
       banyakPercobaan,
       minorLapses,
@@ -48,7 +49,7 @@ export default async function handler(req, res) {
       await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId,
-        range: "Sheet1!A:R",
+        range: "Sheet2!A:S",
         valueInputOption: "USER_ENTERED",
         resource: {
           values: [
@@ -57,10 +58,11 @@ export default async function handler(req, res) {
               date.format("Do MMMM YYYY"),
               date.format("HH:mm:ss[+07:00]"),
               durasi,
-              durasiTidur,
-              kualitasTidur,
+              durasiTidurRumah,
+              kualitasTidurRumah,
+              durasiTidurKendaraan,
+              kualitasTidurKendaraan,
               tingkatKantuk,
-              tingkatLelah,
               reactions,
               banyakPercobaan,
               sum,

@@ -13,9 +13,9 @@ const App = () => {
   useEffect(() => {
     if (
       !localStorage.getItem("durasi") ||
-      !localStorage.getItem("durasiTidur") ||
-      !localStorage.getItem("tingkatKantuk") ||
-      !localStorage.getItem("tingkatLelah")
+      !localStorage.getItem("durasiTidurRumah") ||
+      !localStorage.getItem("durasiTidurKendaraan") ||
+      !localStorage.getItem("tingkatKantuk")
     ) {
       router.push("/");
       return;

@@ -89,9 +89,9 @@ const Game = () => {
   useEffect(() => {
     if (
       !localStorage.getItem("durasi") ||
-      !localStorage.getItem("durasiTidur") ||
-      !localStorage.getItem("tingkatKantuk") ||
-      !localStorage.getItem("tingkatLelah")
+      !localStorage.getItem("durasiTidurRumah") ||
+      !localStorage.getItem("durasiTidurKendaraan") ||
+      !localStorage.getItem("tingkatKantuk")
     ) {
       router.push("/");
       return;
@@ -114,10 +114,11 @@ const Game = () => {
       const nama = localStorage.getItem("nama");
       const durasi = localStorage.getItem("durasi");
       const tingkatKantuk = localStorage.getItem("tingkatKantuk");
-      const tingkatLelah = localStorage.getItem("tingkatLelah");
       const reactions = localStorage.getItem("listReaksi");
-      const durasiTidur = localStorage.getItem("durasiTidur");
-      const kualitasTidur = localStorage.getItem("kualitasTidur");
+      const durasiTidurRumah = localStorage.getItem("durasiTidurRumah");
+      const kualitasTidurRumah = localStorage.getItem("kualitasTidurRumah");
+      const durasiTidurKendaraan = localStorage.getItem("durasiTidurKendaraan");
+      const kualitasTidurKendaraan = localStorage.getItem("kualitasTidurKendaraan");
       const listReaksi = JSON.parse(
         localStorage.getItem("listReaksi") as string
       ) as number[];
@@ -133,10 +134,11 @@ const Game = () => {
       await axios.post("/api/sheets", {
         nama,
         durasi,
-        durasiTidur,
-        kualitasTidur,
+        durasiTidurRumah,
+        kualitasTidurRumah,
+        durasiTidurKendaraan,
+        kualitasTidurKendaraan,
         tingkatKantuk,
-        tingkatLelah,
         reactions,
         banyakPercobaan,
         minorLapses,

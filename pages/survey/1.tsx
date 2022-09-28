@@ -2,7 +2,7 @@ import Information from "../../components/survey/info";
 import Buttons from "../../components/survey/buttons";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Radio from "../../components/survey/tidur/radio";
+import Radio from "../../components/survey/tidur-rumah/radio";
 import styles from "./1.module.css";
 import AuthWrapper from "../../components/authwrapper";
 
@@ -11,8 +11,8 @@ const TingkatKantukPage = () => {
   const [durasiTidur, setDurasiTidur] = useState<string>("");
 
   useEffect(() => {
-    if (localStorage.getItem("durasiTidur")) {
-      setDurasiTidur(localStorage.getItem("durasiTidur") as string);
+    if (localStorage.getItem("durasiTidurRumah")) {
+      setDurasiTidur(localStorage.getItem("durasiTidurRumah") as string);
     }
   }, []);
 
@@ -23,7 +23,7 @@ const TingkatKantukPage = () => {
   }, [router]);
 
   useEffect(() => {
-    localStorage.setItem("durasiTidur", durasiTidur);
+    localStorage.setItem("durasiTidurRumah", durasiTidur);
   }, [durasiTidur]);
 
   return (
@@ -32,7 +32,7 @@ const TingkatKantukPage = () => {
         <form className={styles.formContainer}>
           <div className={styles.formItem}>
             <label htmlFor="durasiTidur">
-              Berapa lama durasi tidur Anda dalam 24 jam terakhir? (dalam jam){" "}
+              Berapa lama durasi tidur <strong>(di rumah)</strong> Anda dalam 24 jam terakhir? (dalam jam){" "}
               <span className="gum">*</span>
             </label>
             <input
@@ -48,7 +48,7 @@ const TingkatKantukPage = () => {
           </div>
         </form>
         <p style={{ marginTop: "30px" }}>
-          Bagaimana kualitas tidur Anda dalam 24 jam terakhir?{" "}
+          Bagaimana kualitas tidur <strong>(di rumah)</strong> Anda dalam 24 jam terakhir?{" "}
           <span className="gum">*</span>
         </p>
         <Radio />

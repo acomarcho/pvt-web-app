@@ -1,14 +1,14 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Subheading from "../../components/summary/subheading";
-import ResultCard from "../../components/summary/resultCard";
 import Button from "../../components/button";
 import AuthWrapper from "../../components/authwrapper";
-import Conclusion from "../../components/summary/conclusion"
+import { getFastest10RT, getMedianRT } from "../../utils/statistics"
+import styles from "./conclusion.module.css"
 
 const Results = () => {
   const router = useRouter();
   const [isLatihan, setIsLatihan] = useState<boolean>(false);
+  const [isFailed, setIsFailed] = useState<boolean>(false);
 
   useEffect(() => {
     if (
@@ -35,25 +35,39 @@ const Results = () => {
     } else {
       setIsLatihan(false);
     }
+
+    const reactions: number[] = JSON.parse(localStorage.getItem("listReaksi")!);
+    if (getFastest10RT(reactions) >= 300 || getMedianRT(reactions) >= 365) {
+      setIsFailed(true);
+    } else {
+      setIsFailed(false);
+    }
   }, []);
 
   if (!isLatihan) {
     return (
       <>
-        <Subheading />
-        <ResultCard />
-        <Conclusion />
+        <div className={styles.subheadingContainer}>
+          <h1>Tes selesai!</h1>
+        </div>
+        {isFailed && (
+          <div className={styles.conclusionBoxOrange}>Stop! Mohon konsultasi dengan paramedis.</div>
+        )}
+        {!isFailed && (
+          <div className={styles.conclusionBoxMint}>Anda siap untuk bekerja!</div>
+        )}
+        <br />
         <Button
           text="Selesai"
           onClick={() => {
-            localStorage.removeItem("tingkatLelah");
             localStorage.removeItem("tingkatKantuk");
             localStorage.removeItem("nama");
             localStorage.removeItem("listReaksi");
             localStorage.removeItem("durasi");
-            localStorage.removeItem("kesiapanKerja");
-            localStorage.removeItem("agreement");
-            localStorage.removeItem("device");
+            localStorage.removeItem("durasiTidurRumah");
+            localStorage.removeItem("durasiTidurKendaraan");
+            localStorage.removeItem("kualitasTidurRumah");
+            localStorage.removeItem("kualitasTidurKendaraan");
             router.push("/");
           }}
           marginTop="30px"
@@ -64,15 +78,14 @@ const Results = () => {
     return (
       <AuthWrapper>
         <>
-          <Subheading />
-          <ResultCard />
-          {/* <Conclusion /> */}
+          <div className={styles.subheadingContainer}>
+            <h1>Anda sudah menyelesaikan latihan!</h1>
+          </div>
           <div
             style={{
               marginTop: "15px",
             }}
           >
-            <p>Anda sudah menyelesaikan latihan!</p>
             <div
               style={{
                 display: "flex",
@@ -92,14 +105,14 @@ const Results = () => {
           <Button
             text="Selesai"
             onClick={() => {
-              localStorage.removeItem("tingkatLelah");
               localStorage.removeItem("tingkatKantuk");
               localStorage.removeItem("nama");
               localStorage.removeItem("listReaksi");
               localStorage.removeItem("durasi");
-              localStorage.removeItem("kesiapanKerja");
-              localStorage.removeItem("agreement");
-              localStorage.removeItem("device");
+              localStorage.removeItem("durasiTidurRumah");
+              localStorage.removeItem("durasiTidurKendaraan");
+              localStorage.removeItem("kualitasTidurRumah");
+              localStorage.removeItem("kualitasTidurKendaraan");
               router.push("/");
             }}
             marginTop="30px"

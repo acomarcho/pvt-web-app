@@ -1,6 +1,6 @@
 import Header from "../../components/header";
 import Information from "../../components/survey/info";
-import Radio from "../../components/survey/tingkat-kantuk/radio";
+import Radio from "../../components/survey/2/radio";
 import Buttons from "../../components/survey/buttons";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -11,8 +11,8 @@ const IstirahatPage = () => {
   useEffect(() => {
     if (
       !localStorage.getItem("durasi") ||
-      !localStorage.getItem("durasiTidurRumah") ||
-      !localStorage.getItem("durasiTidurKendaraan")
+      !localStorage.getItem("durasiTidur") ||
+      !localStorage.getItem("tingkatKantuk")
     ) {
       router.push("/");
     }
@@ -22,7 +22,7 @@ const IstirahatPage = () => {
       <>
         <Information>
           <p>
-            Dalam skala 1-5, seberapa besar tingkat kantuk Anda saat ini?{" "}
+            Seberapa banyak Anda memerlukan istirahat saat ini?{" "}
             <span className="gum">*</span>
           </p>
         </Information>
