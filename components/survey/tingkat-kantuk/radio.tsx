@@ -32,16 +32,13 @@ const RadioButtons = () => {
             <p>1 (Tidak mengantuk)</p>
           </Radio>
           <Radio value="2">
-            <p>2</p>
+            <p>2 (Cukup mengantuk)</p>
           </Radio>
           <Radio value="3">
-            <p>3</p>
+            <p>3 (Mengantuk)</p>
           </Radio>
           <Radio value="4">
-            <p>4</p>
-          </Radio>
-          <Radio value="5">
-            <p>5 (Sangat mengantuk)</p>
+            <p>4 (Sangat mengantuk)</p>
           </Radio>
         </div>
       </RadioGroup>

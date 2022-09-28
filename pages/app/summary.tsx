@@ -66,10 +66,10 @@ const Results = () => {
         <>
           <Subheading />
           <ResultCard />
-          {/* <Conclusion /> */}
+          <Conclusion />
           <div
             style={{
-              marginTop: "15px",
+              marginTop: "30px",
             }}
           >
             <p>Anda sudah menyelesaikan latihan!</p>
@@ -77,6 +77,7 @@ const Results = () => {
               style={{
                 display: "flex",
                 marginTop: "15px",
+                marginBottom: "-15px",
                 gap: "15px",
               }}
             >

@@ -22,7 +22,7 @@ const IstirahatPage = () => {
       <>
         <Information>
           <p>
-            Dalam skala 1-5, seberapa besar tingkat kantuk Anda saat ini?{" "}
+            Dalam skala 1-4, seberapa besar tingkat kantuk Anda saat ini?{" "}
             <span className="gum">*</span>
           </p>
         </Information>

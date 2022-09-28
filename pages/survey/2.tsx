@@ -2,32 +2,42 @@ import Information from "../../components/survey/info";
 import Buttons from "../../components/survey/buttons";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Radio from "../../components/survey/tidur-kendaraan/radio";
+import Radio from "../../components/survey/tidur-rumah/radio";
 import styles from "./1.module.css";
 import AuthWrapper from "../../components/authwrapper";
 
 const TingkatKantukPage = () => {
   const router = useRouter();
-  const [durasiTidur, setDurasiTidur] = useState<string>("");
+  const [durasiJam, setDurasiJam] = useState<string>("");
+  const [durasiMenit, setDurasiMenit] = useState<string>("");
 
   useEffect(() => {
     if (localStorage.getItem("durasiTidurKendaraan")) {
-      setDurasiTidur(localStorage.getItem("durasiTidurKendaraan") as string);
+      const duration = localStorage.getItem("durasiTidurKendaraan");
+      const hours = Math.floor(parseInt(duration!) / 60);
+      const minutes = parseInt(duration!) % 60;
+      setDurasiJam(hours === 0 ? "" : hours.toString());
+      setDurasiMenit(minutes === 0 ? "" : minutes.toString());
     }
   }, []);
 
   useEffect(() => {
-    if (
-      !localStorage.getItem("durasi") ||
-      !localStorage.getItem("durasiTidurRumah")
-    ) {
+    if (!localStorage.getItem("durasi")) {
       router.push("/");
     }
   }, [router]);
 
   useEffect(() => {
-    localStorage.setItem("durasiTidurKendaraan", durasiTidur);
-  }, [durasiTidur]);
+    let hours = parseInt(durasiJam);
+    if (isNaN(hours)) {
+      hours = 0;
+    }
+    let minutes = parseInt(durasiMenit);
+    if (isNaN(minutes)) {
+      minutes = 0;
+    }
+    localStorage.setItem("durasiTidurKendaraan", (hours * 60 + minutes).toString());
+  }, [durasiJam, durasiMenit]);
 
   return (
     <AuthWrapper>
@@ -35,23 +45,68 @@ const TingkatKantukPage = () => {
         <form className={styles.formContainer}>
           <div className={styles.formItem}>
             <label htmlFor="durasiTidur">
-              Berapa lama durasi tidur <strong>(di kendaraan)</strong> Anda
-              dalam 24 jam terakhir? (dalam jam) <span className="gum">*</span>
+              Berapa lama durasi tidur <strong>DI KENDARAAN</strong> Anda dalam 24
+              jam terakhir? <span className="gum">*</span>
             </label>
-            <input
-              type="number"
-              name="durasiTidur"
-              id="durasiTidur"
-              value={durasiTidur}
-              onChange={(e) => setDurasiTidur(e.target.value)}
-            />
-            {(parseInt(durasiTidur) < 0 || parseInt(durasiTidur) > 24) && (
-              <p className="gum">Durasi tidak valid!</p>
-            )}
+            <div className={styles.formFlex}>
+              <div className={styles.formFlexItem}>
+                <input
+                  type="number"
+                  name="durasiTidur"
+                  id="durasiTidur"
+                  min="0"
+                  max="24"
+                  placeholder="0"
+                  value={durasiJam}
+                  onChange={(e) => {
+                    if (
+                      parseInt(e.target.value) >= 0 &&
+                      parseInt(e.target.value) <= 59
+                    ) {
+                      setDurasiJam(e.target.value);
+                    }
+                    if (
+                      e.target.value === "" ||
+                      parseInt(e.target.value) === 0
+                    ) {
+                      setDurasiJam("");
+                    }
+                  }}
+                />
+                <p>jam</p>
+              </div>
+              <div className={styles.formFlexItem}>
+                <input
+                  type="number"
+                  name="durasiTidur"
+                  id="durasiTidur"
+                  min="0"
+                  max="59"
+                  step="5"
+                  placeholder="0"
+                  value={durasiMenit}
+                  onChange={(e) => {
+                    if (
+                      parseInt(e.target.value) >= 0 &&
+                      parseInt(e.target.value) <= 59
+                    ) {
+                      setDurasiMenit(e.target.value);
+                    }
+                    if (
+                      e.target.value === "" ||
+                      parseInt(e.target.value) === 0
+                    ) {
+                      setDurasiMenit("");
+                    }
+                  }}
+                />
+                <p>menit</p>
+              </div>
+            </div>
           </div>
         </form>
         <p style={{ marginTop: "30px" }}>
-          Bagaimana kualitas <strong>(di kendaraan)</strong> Anda dalam 24 jam
+          Bagaimana kualitas tidur <strong>DI KENDARAAN</strong> Anda dalam 24 jam
           terakhir? <span className="gum">*</span>
         </p>
         <Radio />
@@ -68,9 +123,11 @@ const TingkatKantukPage = () => {
               router.push("/survey/3");
             }}
             disabled={
-              durasiTidur === "" ||
-              parseInt(durasiTidur) < 0 ||
-              parseInt(durasiTidur) > 24
+              (durasiJam === "" && durasiMenit === "") ||
+              parseInt(durasiJam) + parseInt(durasiMenit) / 60 <= 0 ||
+              parseInt(durasiJam) + parseInt(durasiMenit) / 60 > 24 ||
+              parseInt(durasiJam) > 24 ||
+              parseInt(durasiMenit) > 59
             }
           >
             Selanjutnya

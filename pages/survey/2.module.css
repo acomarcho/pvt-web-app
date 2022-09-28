@@ -56,6 +56,21 @@
   opacity: 0.3;
 }
 
+.formFlex {
+  display: flex;
+  gap: 30px;
+}
+
+.formFlexItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.formFlexItem input {
+  width: 80px;
+}
+
 @media (min-width: 768px) {
   .buttonsContainer button {
     font-size: 18px;
