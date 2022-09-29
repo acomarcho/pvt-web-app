@@ -2,7 +2,7 @@ import Information from "../../components/survey/info";
 import Buttons from "../../components/survey/buttons";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Radio from "../../components/survey/tidur-rumah/radio";
+import Radio from "../../components/survey/tidur-kendaraan/radio";
 import styles from "./1.module.css";
 import AuthWrapper from "../../components/authwrapper";
 
@@ -18,6 +18,8 @@ const TingkatKantukPage = () => {
       const minutes = parseInt(duration!) % 60;
       setDurasiJam(hours === 0 ? "" : hours.toString());
       setDurasiMenit(minutes === 0 ? "" : minutes.toString());
+    } else {
+      localStorage.setItem("durasiTidurKendaraan", "0");
     }
   }, []);
 
@@ -46,7 +48,7 @@ const TingkatKantukPage = () => {
           <div className={styles.formItem}>
             <label htmlFor="durasiTidur">
               Berapa lama durasi tidur <strong>DI KENDARAAN</strong> Anda dalam 24
-              jam terakhir? <span className="gum">*</span>
+              jam terakhir? (kosongkan jika tidak sempat tidur <strong>di KENDARAAN</strong>)<span className="gum">*</span>
             </label>
             <div className={styles.formFlex}>
               <div className={styles.formFlexItem}>
@@ -106,7 +108,7 @@ const TingkatKantukPage = () => {
           </div>
         </form>
         <p style={{ marginTop: "30px" }}>
-          Bagaimana kualitas tidur <strong>DI KENDARAAN</strong> Anda dalam 24 jam
+          Apabila Anda sempat tidur <strong>DI KENDARAAN</strong>, bagaimana kualitas tidur <strong>DI KENDARAAN</strong> Anda dalam 24 jam
           terakhir? <span className="gum">*</span>
         </p>
         <Radio />
@@ -123,8 +125,6 @@ const TingkatKantukPage = () => {
               router.push("/survey/3");
             }}
             disabled={
-              (durasiJam === "" && durasiMenit === "") ||
-              parseInt(durasiJam) + parseInt(durasiMenit) / 60 <= 0 ||
               parseInt(durasiJam) + parseInt(durasiMenit) / 60 > 24 ||
               parseInt(durasiJam) > 24 ||
               parseInt(durasiMenit) > 59

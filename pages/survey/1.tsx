@@ -18,6 +18,8 @@ const TingkatKantukPage = () => {
       const minutes = parseInt(duration!) % 60;
       setDurasiJam(hours === 0 ? "" : hours.toString());
       setDurasiMenit(minutes === 0 ? "" : minutes.toString());
+    } else {
+      localStorage.setItem("durasiTidurRumah", "0");
     }
   }, []);
 
@@ -46,7 +48,7 @@ const TingkatKantukPage = () => {
           <div className={styles.formItem}>
             <label htmlFor="durasiTidur">
               Berapa lama durasi tidur <strong>DI RUMAH</strong> Anda dalam 24
-              jam terakhir? <span className="gum">*</span>
+              jam terakhir? (kosongkan jika tidak sempat tidur <strong>DI RUMAH</strong>) <span className="gum">*</span>
             </label>
             <div className={styles.formFlex}>
               <div className={styles.formFlexItem}>
@@ -87,14 +89,13 @@ const TingkatKantukPage = () => {
                   value={durasiMenit}
                   onChange={(e) => {
                     if (
-                      parseInt(e.target.value) >= 0 &&
+                      parseInt(e.target.value) > 0 &&
                       parseInt(e.target.value) <= 59
                     ) {
                       setDurasiMenit(e.target.value);
                     }
                     if (
-                      e.target.value === "" ||
-                      parseInt(e.target.value) === 0
+                      e.target.value === ""
                     ) {
                       setDurasiMenit("");
                     }
@@ -106,7 +107,7 @@ const TingkatKantukPage = () => {
           </div>
         </form>
         <p style={{ marginTop: "30px" }}>
-          Bagaimana kualitas tidur <strong>DI RUMAH</strong> Anda dalam 24 jam
+          Apabila Anda sempat tidur <strong>DI RUMAH</strong>, bagaimana kualitas tidur <strong>DI RUMAH</strong> Anda dalam 24 jam
           terakhir? <span className="gum">*</span>
         </p>
         <Radio />
@@ -123,8 +124,6 @@ const TingkatKantukPage = () => {
               router.push("/survey/2");
             }}
             disabled={
-              (durasiJam === "" && durasiMenit === "") ||
-              parseInt(durasiJam) + parseInt(durasiMenit) / 60 <= 0 ||
               parseInt(durasiJam) + parseInt(durasiMenit) / 60 > 24 ||
               parseInt(durasiJam) > 24 ||
               parseInt(durasiMenit) > 59
