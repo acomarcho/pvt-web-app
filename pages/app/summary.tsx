@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Subheading from "../../components/summary/subheading";
+import Subheading from "../../components/summary/subheading-2";
 import ResultCard from "../../components/summary/resultCard";
 import Button from "../../components/button";
 import AuthWrapper from "../../components/authwrapper";
@@ -65,14 +65,11 @@ const Results = () => {
       <AuthWrapper>
         <>
           <Subheading />
-          <ResultCard />
-          <Conclusion />
           <div
             style={{
-              marginTop: "30px",
+              marginTop: "15px",
             }}
           >
-            <p>Anda sudah menyelesaikan latihan!</p>
             <div
               style={{
                 display: "flex",
