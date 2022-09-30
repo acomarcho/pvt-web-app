@@ -6,7 +6,8 @@ import Select from "react-select";
 
 const options = [
   { value: "1", label: "Latihan (durasi 1 menit)" },
-  { value: "3", label: "3 menit" }
+  { value: "3", label: "3 menit" },
+  { value: "5", label: "5 menit" }
 ];
 
 const customStyles = {
@@ -73,6 +74,12 @@ const Form = () => {
       setDurasi({
         value: "3",
         label: "3 menit",
+      });
+    }
+    if (localStorage.getItem("durasi") === "5") {
+      setDurasi({
+        value: "5",
+        label: "5 menit",
       });
     }
   }, []);
