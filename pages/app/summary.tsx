@@ -73,8 +73,8 @@ const Results = () => {
             <div
               style={{
                 display: "flex",
-                marginTop: "15px",
-                marginBottom: "-15px",
+                flexDirection: "column",
+                alignItems: "flex-start",
                 gap: "15px",
               }}
             >
@@ -82,6 +82,13 @@ const Results = () => {
                 text="Mulai tes 3 menit"
                 onClick={() => {
                   localStorage.setItem("durasi", "3");
+                  router.push("/app");
+                }}
+              />
+              <Button
+                text="Mulai tes 5 menit"
+                onClick={() => {
+                  localStorage.setItem("durasi", "5");
                   router.push("/app");
                 }}
               />

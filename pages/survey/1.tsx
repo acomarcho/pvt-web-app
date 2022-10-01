@@ -47,7 +47,7 @@ const TingkatKantukPage = () => {
         <form className={styles.formContainer}>
           <div className={styles.formItem}>
             <label htmlFor="durasiTidur">
-              Berapa lama durasi tidur <strong>DI RUMAH</strong> Anda dalam 24
+              Berapa lama durasi tidur Anda <strong>DI RUMAH</strong> dalam 24
               jam terakhir? (kosongkan jika tidak sempat tidur <strong>DI RUMAH</strong>) <span className="gum">*</span>
             </label>
             <div className={styles.formFlex}>
@@ -107,7 +107,7 @@ const TingkatKantukPage = () => {
           </div>
         </form>
         <p style={{ marginTop: "30px" }}>
-          Apabila Anda sempat tidur <strong>DI RUMAH</strong>, bagaimana kualitas tidur <strong>DI RUMAH</strong> Anda dalam 24 jam
+          Apabila Anda sempat tidur <strong>DI RUMAH</strong>, bagaimana kualitas tidur Anda <strong>DI RUMAH</strong> dalam 24 jam
           terakhir? <span className="gum">*</span>
         </p>
         <Radio />

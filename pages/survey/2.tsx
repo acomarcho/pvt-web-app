@@ -38,7 +38,10 @@ const TingkatKantukPage = () => {
     if (isNaN(minutes)) {
       minutes = 0;
     }
-    localStorage.setItem("durasiTidurKendaraan", (hours * 60 + minutes).toString());
+    localStorage.setItem(
+      "durasiTidurKendaraan",
+      (hours * 60 + minutes).toString()
+    );
   }, [durasiJam, durasiMenit]);
 
   return (
@@ -47,8 +50,9 @@ const TingkatKantukPage = () => {
         <form className={styles.formContainer}>
           <div className={styles.formItem}>
             <label htmlFor="durasiTidur">
-              Berapa lama durasi tidur <strong>DI KENDARAAN</strong> Anda dalam 24
-              jam terakhir? (kosongkan jika tidak sempat tidur <strong>di KENDARAAN</strong>)<span className="gum">*</span>
+              Berapa lama durasi tidur Anda <strong>DI KENDARAAN</strong> dalam
+              24 jam terakhir? (kosongkan jika tidak sempat tidur{" "}
+              <strong>di KENDARAAN</strong>)<span className="gum">*</span>
             </label>
             <div className={styles.formFlex}>
               <div className={styles.formFlexItem}>
@@ -108,7 +112,8 @@ const TingkatKantukPage = () => {
           </div>
         </form>
         <p style={{ marginTop: "30px" }}>
-          Apabila Anda sempat tidur <strong>DI KENDARAAN</strong>, bagaimana kualitas tidur <strong>DI KENDARAAN</strong> Anda dalam 24 jam
+          Apabila Anda sempat tidur <strong>DI KENDARAAN</strong>, bagaimana
+          kualitas tidur Anda <strong>DI KENDARAAN</strong> dalam 24 jam
           terakhir? <span className="gum">*</span>
         </p>
         <Radio />
