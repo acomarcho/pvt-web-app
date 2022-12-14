@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
 :root {
-  --primary: #28293D;
+  --primary: hsl(187, 100%, 12%);
   --gradient-atlantic: linear-gradient(90.41deg, #FFFFFF 0%, #3EEBBE 0%, #4EC1F3 0.01%, #68FCD6 100%);
   --secondary: #6E7198;
   --white: rgb(255, 255, 255);

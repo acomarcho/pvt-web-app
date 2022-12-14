@@ -210,9 +210,9 @@ const Game = () => {
             </p>
           )}
       </div>
-      <div style={{ marginTop: "45px" }}>
+      <div style={{ marginTop: "30px" }}>
         <img
-          style={{ width: "100%", opacity: showImage ? "100%" : "0" }}
+          style={{ width: "100%", maxHeight: "40vh", objectFit: "cover", opacity: showImage ? "100%" : "0" }}
           src="/board.png"
           alt="checkered board"
         />
@@ -227,7 +227,7 @@ const Game = () => {
           padding: "12px 24px",
           fontSize: "16px",
           cursor: "pointer",
-          marginTop: "15px ",
+          marginTop: "30px ",
         }}
         onClick={exitGame}
       >

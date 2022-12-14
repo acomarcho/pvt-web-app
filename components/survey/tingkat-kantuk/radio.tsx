@@ -23,23 +23,57 @@ const RadioButtons = () => {
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
-            gap: " 9px",
+            flexDirection: "row",
+            gap: "30px",
             marginTop: "30px",
           }}
         >
-          <Radio value="1">
-            <p>1 (Tidak mengantuk)</p>
-          </Radio>
-          <Radio value="2">
-            <p>2 (Cukup mengantuk)</p>
-          </Radio>
-          <Radio value="3">
-            <p>3 (Mengantuk)</p>
-          </Radio>
-          <Radio value="4">
-            <p>4 (Sangat mengantuk)</p>
-          </Radio>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "9px",
+            }}
+          >
+            <Radio value="1">
+              <p>1</p>
+            </Radio>
+            <Radio value="2">
+              <p>2</p>
+            </Radio>
+            <Radio value="3">
+              <p>3</p>
+            </Radio>
+            <Radio value="4">
+              <p>4</p>
+            </Radio>
+            <Radio value="5">
+              <p>5</p>
+            </Radio>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "9px",
+            }}
+          >
+            <Radio value="6">
+              <p>6</p>
+            </Radio>
+            <Radio value="7">
+              <p>7</p>
+            </Radio>
+            <Radio value="8">
+              <p>8</p>
+            </Radio>
+            <Radio value="9">
+              <p>9</p>
+            </Radio>
+            <Radio value="10">
+              <p>10</p>
+            </Radio>
+          </div>
         </div>
       </RadioGroup>
     </ChakraProvider>
