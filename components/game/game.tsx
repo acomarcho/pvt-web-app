@@ -119,6 +119,7 @@ const Game = () => {
       const kualitasTidurRumah = localStorage.getItem("kualitasTidurRumah");
       const durasiTidurKendaraan = localStorage.getItem("durasiTidurKendaraan");
       const kualitasTidurKendaraan = localStorage.getItem("kualitasTidurKendaraan");
+      const butuhIstirahat = localStorage.getItem("butuhIstirahat");
       const listReaksi = JSON.parse(
         localStorage.getItem("listReaksi") as string
       ) as number[];
@@ -139,6 +140,7 @@ const Game = () => {
         durasiTidurKendaraan,
         kualitasTidurKendaraan,
         tingkatKantuk,
+        butuhIstirahat,
         reactions,
         banyakPercobaan,
         minorLapses,

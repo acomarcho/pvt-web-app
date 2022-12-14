@@ -15,6 +15,7 @@ export default async function handler(req, res) {
       durasiTidurKendaraan,
       kualitasTidurKendaraan,
       tingkatKantuk,
+      butuhIstirahat,
       reactions,
       banyakPercobaan,
       minorLapses,
@@ -49,7 +50,7 @@ export default async function handler(req, res) {
       await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId,
-        range: "Sheet2!A:S",
+        range: "Sheet3!A:T",
         valueInputOption: "USER_ENTERED",
         resource: {
           values: [
@@ -63,6 +64,7 @@ export default async function handler(req, res) {
               durasiTidurKendaraan,
               kualitasTidurKendaraan,
               tingkatKantuk,
+              butuhIstirahat,
               reactions,
               banyakPercobaan,
               sum,

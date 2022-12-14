@@ -1,10 +1,12 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Subheading from "../../components/summary/subheading-2";
+import Subheading from "../../components/summary/subheading";
+import Subheading2 from "../../components/summary/subheading-2";
+import WaktuHabis from "../../components/summary/waktuHabis";
 import ResultCard from "../../components/summary/resultCard";
 import Button from "../../components/button";
 import AuthWrapper from "../../components/authwrapper";
-import Conclusion from "../../components/summary/conclusion"
+import Conclusion from "../../components/summary/conclusion";
 
 const Results = () => {
   const router = useRouter();
@@ -39,32 +41,42 @@ const Results = () => {
 
   if (!isLatihan) {
     return (
-      <>
-        <Subheading />
-        <ResultCard />
-        <Conclusion />
-        <Button
-          text="Selesai"
-          onClick={() => {
-            localStorage.removeItem("tingkatLelah");
-            localStorage.removeItem("tingkatKantuk");
-            localStorage.removeItem("nama");
-            localStorage.removeItem("listReaksi");
-            localStorage.removeItem("durasi");
-            localStorage.removeItem("kesiapanKerja");
-            localStorage.removeItem("agreement");
-            localStorage.removeItem("device");
-            router.push("/");
-          }}
-          marginTop="30px"
-        />
-      </>
+      <AuthWrapper>
+        <>
+          <WaktuHabis />
+          <Subheading />
+          <ResultCard />
+          <p style={{ marginTop: "15px" }}>
+            Terima kasih telah berpartisipasi dalam tes ini!
+          </p>
+          <Button
+            text="Selesai"
+            onClick={() => {
+              if (typeof window !== 'undefined') {
+                localStorage.removeItem("nama");
+                localStorage.removeItem("durasi");
+                localStorage.removeItem("kualitasTidurRumah");
+                localStorage.removeItem("durasiTidurRumah");
+                localStorage.removeItem("kualitasTidurKendaraan");
+                localStorage.removeItem("durasiTidurKendaraan");
+                localStorage.removeItem("tingkatKantuk");
+                localStorage.removeItem("butuhIstirahat");
+                localStorage.removeItem("listReaksi");
+              }
+              router.push("/");
+            }}
+            marginTop="30px"
+          />
+        </>
+      </AuthWrapper>
     );
   } else {
     return (
       <AuthWrapper>
         <>
-          <Subheading />
+          <WaktuHabis />
+          <Subheading2 />
+          <ResultCard />
           <div
             style={{
               marginTop: "15px",
@@ -79,13 +91,6 @@ const Results = () => {
               }}
             >
               <Button
-                text="Mulai tes 3 menit"
-                onClick={() => {
-                  localStorage.setItem("durasi", "3");
-                  router.push("/app");
-                }}
-              />
-              <Button
                 text="Mulai tes 5 menit"
                 onClick={() => {
                   localStorage.setItem("durasi", "5");
@@ -97,14 +102,17 @@ const Results = () => {
           <Button
             text="Selesai"
             onClick={() => {
-              localStorage.removeItem("tingkatLelah");
-              localStorage.removeItem("tingkatKantuk");
-              localStorage.removeItem("nama");
-              localStorage.removeItem("listReaksi");
-              localStorage.removeItem("durasi");
-              localStorage.removeItem("kesiapanKerja");
-              localStorage.removeItem("agreement");
-              localStorage.removeItem("device");
+              if (typeof window !== 'undefined') {
+                localStorage.removeItem("nama");
+                localStorage.removeItem("durasi");
+                localStorage.removeItem("kualitasTidurRumah");
+                localStorage.removeItem("durasiTidurRumah");
+                localStorage.removeItem("kualitasTidurKendaraan");
+                localStorage.removeItem("durasiTidurKendaraan");
+                localStorage.removeItem("tingkatKantuk");
+                localStorage.removeItem("butuhIstirahat");
+                localStorage.removeItem("listReaksi");
+              }
               router.push("/");
             }}
             marginTop="30px"
